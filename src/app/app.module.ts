@@ -4,9 +4,10 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {Utility} from './app.utility';
 import {routes} from './app.router';
+import {HttpModule} from '@angular/http';
 import {AuthenticationModule} from './authentication/authentication.module';
 import {CommonModule} from '@angular/common';
-
+import {LocalStorage} from './app.localStorage';
 import {NavbarModule} from './navbar/navbar.module';
 import {DashboardModule} from './dashboard/dashboard.module';
 
@@ -16,9 +17,9 @@ import {DashboardModule} from './dashboard/dashboard.module';
     AppComponent
   ],
   imports: [
-    BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule
+    BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule, HttpModule
   ],
-  providers: [Utility],
+  providers: [Utility, LocalStorage],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

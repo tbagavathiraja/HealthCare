@@ -9,7 +9,7 @@ import {Component} from '@angular/core';
 export class AppComponent {
   title = 'app';
   dashboardClick = false;
-  showIncludes=false;
+  showIncludes = false;
 }
 
 

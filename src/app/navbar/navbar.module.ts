@@ -9,6 +9,5 @@ import {NavbarService} from './navbar.service';
   ],
   declarations: [NavbarComponent],
   providers: [ NavbarService],
-  exports: [NavbarComponent]
 })
 export class NavbarModule { }
