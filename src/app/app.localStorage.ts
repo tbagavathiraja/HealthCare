@@ -30,7 +30,7 @@ export class LocalStorage {
   }
 
   clear() {
-    sessionStorage.clar();
+    sessionStorage.clear();
   }
 
 }

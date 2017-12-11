@@ -30,11 +30,13 @@ export class LoginService {
 
 
   private extractData(res: Response) {
+   // console.log('extracting  ' + JSON.stringify(res));
     return res.json();
   }
 
 
   private handleError(error: any): Promise<any> {
+    console.log(error.message);
     return Promise.reject(error.message);
   }
 

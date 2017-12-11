@@ -1,9 +1,8 @@
 export class AppConstants {
 
-  public static serverUrl = 'http://localhost:8000';
+  public static serverUrl = 'http://localhost:5400';
   public static successStatus = 'success';
-
-
+  
 }
 
 

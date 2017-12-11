@@ -18,7 +18,6 @@ export class DashboardComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.dashboardClick = this.appComponent.dashboardClick;
-
   }
 
 }

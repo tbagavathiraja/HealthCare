@@ -36,16 +36,14 @@ export class LoginComponent implements OnInit {
         .then((response) => {
           if (response.status === AppConstants.successStatus) {
             this.localStorage.clear();
+            console.log(response)
 
-            this.localStorage.setItem('token', response.data.token);
-            this.localStorage.setItem('role', response.data.role);
+            this.localStorage.setItem('token', response.session_auth_token);
+            this.localStorage.setItem('role', response.role_type_name);
             this.appComponent.showIncludes = true;
-            if (response.data.role === 'admin') {
+            if (response.role_type_name === 'admin') {
               this.router.navigate(['/dashboard']);
-
             }
-
-
           } else {
             this.errMessage = ErrorConstants.loginError;
           }

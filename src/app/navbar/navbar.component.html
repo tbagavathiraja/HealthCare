@@ -1,30 +1,43 @@
+
+<div class="btn btn-info btn-lg" style="width: 100%">
+
 <div class="container-fluid" >
 
-</div>
-<nav class="navbar navbar-inverse " data-spy="affix" data-offset-top="197">
+<nav class="navbar " data-spy="affix" data-offset-top="197">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">HEALTCARE</a>
+      <a class="navbar-brand" href="#" style="color: white">HEALTCARE</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#" (click)="setDashboardClick()"> Dashboard</a></li>
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
+      <li class="active"><a (click)="setDashboardClick()"> Dashboard</a></li>
+      <li class="dropdown" ><a class="dropdown-toggle" style="color:#C8C2F1   ;" data-toggle="dropdown" href="#">Manage users<span class="caret"></span></a>
+            <ul class="dropdown-menu" id="add-dropdown" style="border-radius: 15px" >
+
+              <div class="btn-group-vertical" style="border-radius: 15px">
+
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;">Add User</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;">view All users</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;">remove user</button>
+              </div>
+
         </ul>
+    </li>
+      <li class="dropdown"><a class="dropdown-toggle"  data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+      <ul class="dropdown-menu" style="border-radius: 15px">
+
+        <div class="btn-group-vertical" style="border-radius: 15px">
+          <button type="button" class="btn btn-info btn-lg" style="background-color:#5bc0de;">view history</button>
+          <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;">remove history</button>
+        </div>
+
+      </ul>
       </li>
-      <li><a href="#">Page 2</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
     </ul>
   </div>
 </nav>
 
-<div class="container">
-
 </div>
-
+</div>

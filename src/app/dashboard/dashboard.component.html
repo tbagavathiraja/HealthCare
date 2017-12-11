@@ -1,10 +1,11 @@
 
-<div class="row" id="dashboardComp"  >
+
+<div class="row" id="dashboardComp" >
   <!-- uncomment code for absolute positioning tweek see top comment in css -->
   <!-- <div class="absolute-wrapper"> </div> -->
   <!-- Menu -->
-  <div class="side-menu"  [class.open]="dashboardClick">
-    <nav class="navbar navbar-default" role="navigation">
+  <div class="side-menu"  [class.open]="dashboardClick" >
+    <nav class="navbar navbar-default" role="navigation" >
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <div class="brand-wrapper">
@@ -13,12 +14,12 @@
           <!-- Brand -->
           <div class="brand-name-wrapper">
             <a class="navbar-brand" href="#">
-              Brand
+             HealthCare
             </a>
           </div>
 
           <!-- Search -->
-          <a data-toggle="collapse" href="#search" class="btn btn-default" id="search-trigger">
+          <a data-toggle="collapse" href="#search" class="btn btn-info btn-lg" id="search-trigger">
             <span class="glyphicon glyphicon-search"></span>
           </a>
 
@@ -41,45 +42,60 @@
       <div class="side-menu-container">
         <ul class="nav navbar-nav">
 
-          <li><a href="#"><span class="glyphicon glyphicon-send"></span> Link</a></li>
-          <li class="active"><a href="#"><span class="glyphicon glyphicon-plane"></span> Active Link</a></li>
-          <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Link</a></li>
+          <li><a href="#" class="btn btn-info btn-lg" ><span class="glyphicon glyphicon-user"></span> User my profile</a></li>
+          <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
+          <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
+          <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
+          <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-trophy"></span>Achievments</a></li>
 
           <!-- Dropdown-->
           <li class="panel panel-default" id="dropdown">
-            <a data-toggle="collapse" href="#dropdown-lvl1">
-              <span class="glyphicon glyphicon-user"></span> Sub Level <span class="caret"></span>
+            <a class="btn btn-info btn-lg" data-toggle="collapse" href="#dropdown-lvl1">
+              <span class="glyphicon glyphicon-filter"></span> Filter <span class="caret"></span>
             </a>
 
             <!-- Dropdown level 1 -->
             <div id="dropdown-lvl1" class="panel-collapse collapse">
               <div class="panel-body">
                 <ul class="nav navbar-nav">
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
-                  <li><a href="#">Link</a></li>
 
-                  <!-- Dropdown level 2 -->
-                  <li class="panel panel-default" id="dropdown">
-                    <a data-toggle="collapse" href="#dropdown-lvl2">
-                      <span class="glyphicon glyphicon-off"></span> Sub Level <span class="caret"></span>
-                    </a>
-                    <div id="dropdown-lvl2" class="panel-collapse collapse">
-                      <div class="panel-body">
-                        <ul class="nav navbar-nav">
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                          <li><a href="#">Link</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
+
+                          <!-- List group -->
+                          <ul class="list-group" >
+                            <li class="list-group-item" style="background-color:#f2f4f7">
+                              doctors
+                              <div class="material-switch pull-right">
+                                <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox"/>
+                                <label for="someSwitchOptionDefault" class="label-default"></label>
+                              </div>
+                            </li>
+                            <li class="list-group-item" style="background-color:#f2f4f7">
+                             location
+                              <div class="material-switch pull-right">
+                                <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                                <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                              </div>
+                            </li>
+                            <li class="list-group-item" style="background-color:#f2f4f7">
+                              gender
+                              <div class="material-switch pull-right">
+                                <input id="someSwitchOptionSuccess" name="someSwitchOption001" type="checkbox"/>
+                                <label for="someSwitchOptionSuccess" class="label-success"></label>
+                              </div>
+                            </li>
+                            <li class="list-group-item" style="background-color:#f2f4f7">
+                              hospital
+                              <div class="material-switch pull-right">
+                                <input id="someSwitchOptionInfo" name="someSwitchOption001" type="checkbox"/>
+                                <label for="someSwitchOptionInfo" class="label-info"></label>
+                              </div>
+                            </li>
+                          </ul>
+
                 </ul>
               </div>
             </div>
           </li>
-
-          <li><a href="#"><span class="glyphicon glyphicon-signal"></span> Link</a></li>
 
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -91,14 +107,6 @@
   <div class="container-fluid">
     <div class="side-body">
       <h1> Main Content here </h1>
-      <pre> Resize the screen to view the left slide menu </pre>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 
 
     </div>

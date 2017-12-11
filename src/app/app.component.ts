@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, DoCheck} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,10 +6,14 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {
+export class AppComponent implements DoCheck {
   title = 'app';
   dashboardClick = false;
   showIncludes = false;
+
+  ngDoCheck() {
+    console.log(this.dashboardClick);
+  }
 }
 
 

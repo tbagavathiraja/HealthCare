@@ -1,9 +1,19 @@
 .affix {
   top: 0;
   width: 100%;
-z-index: 1;
+  z-index: 1;
 }
 
 .affix + .container-fluid {
   padding-top: 10px;
+}
+
+a {
+cursor:pointer;
+}
+
+div.btn-group-vertical{
+  background-color: #2b669a;
+  color: #2e6da4;
+  width: 170px;
 }

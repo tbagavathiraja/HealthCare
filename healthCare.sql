@@ -72,7 +72,16 @@ CREATE
 			CONSTRAINT fk_user_role FOREIGN KEY(role_id) REFERENCES USER(role_id) ON DELETE CASCADE
 		);
 
-
+CREATE TABLE `user_session` (
+  `user_session_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `session_auth_token` varchar(255) NOT NULL,
+  `expiry_time` datetime NOT NULL,
+  PRIMARY KEY (`user_session_id`),
+  UNIQUE KEY `uq_session_auth_token` (`session_auth_token`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `fk_user_session` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
+) ;
 
 
 
