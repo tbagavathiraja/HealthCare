@@ -1,4 +1,5 @@
 import {Component, OnInit, DoCheck} from '@angular/core';
+import {Router} from '@angular/router';
 import {AppComponent} from '../app.component';
 
 @Component({
@@ -7,17 +8,19 @@ import {AppComponent} from '../app.component';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit, DoCheck {
-
+  addUser;
   dashboardClick;
 
-  constructor(private appComponent: AppComponent) {
+  constructor(private appcomponent: AppComponent, private router: Router) {
   }
 
   ngOnInit() {
   }
 
   ngDoCheck() {
-    this.dashboardClick = this.appComponent.dashboardClick;
+    this.dashboardClick = this.appcomponent.dashboardClick;
+    this.addUser = this.appcomponent.addUser;
+    console.log('DDD' + this.appcomponent.dashboardClick);
   }
 
 }

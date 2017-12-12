@@ -9,10 +9,11 @@ import {Component, DoCheck} from '@angular/core';
 export class AppComponent implements DoCheck {
   title = 'app';
   dashboardClick = false;
-  showIncludes = false;
+  showIncludes = true;
+addUser = false;
 
   ngDoCheck() {
-    console.log(this.dashboardClick);
+    // console.log(this.dashboardClick);
   }
 }
 

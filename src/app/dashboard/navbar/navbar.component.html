@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+
+<div class="btn btn-info btn-lg" style="width: 100%">
+
+  <div class="container-fluid" >
+
+    <nav class="navbar " data-spy="affix" data-offset-top="197">
+      <div class="container-fluid">
+        <div class="navbar-header" >
+          <a class="navbar-brand" style="color: white;border-radius: 20px">HEALTCARE</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a (click)="setDashboardClick()"> Dashboard</a></li>
+          <li class="dropdown" style="padding-left:5px;"><a class="dropdown-toggle" style="color: #0f0f0f;border-radius: 20px;"  data-toggle="dropdown" href="#">Manage users<span class="caret"></span></a>
+            <ul class="dropdown-menu" id="add-dropdown" style="border-radius: 15px" >
+
+              <div class="btn-group-vertical" style="border-radius: 15px">
+
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="add" (click)="manageUsers($event)">Add User</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="view" (click)="manageUsers($event)">view All users</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="remove" (click)="manageUsers($event)">remove user</button>
+              </div>{{manageUser.addUser}}
+            </ul>
+          </li>
+          <li class="dropdown" style="padding-left:29px"><a class="dropdown-toggle"  data-toggle="dropdown" href="#" style="color: #0f0f0f;border-radius:20px">Admin<span class="caret"></span></a>
+            <ul class="dropdown-menu" style="border-radius: 15px">
+
+              <div class="btn-group-vertical" style="border-radius: 15px">
+                <button type="button" class="btn btn-info btn-lg" style="background-color:#5bc0de;" value="view" (click)="manageUsers($event)">view history</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="edit" (click)="manageUsers($event)">edit history</button>
+              </div>
+
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#" class="btn btn-info btn-lg" style="color: #0f0f0f;border-radius: 20px"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  </div>
+</div>
+
+
+
+</body>
+</html>

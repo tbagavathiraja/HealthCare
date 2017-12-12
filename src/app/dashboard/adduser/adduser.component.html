@@ -1,0 +1,118 @@
+<div class="container">
+  <button #modalButton type="button" style="display: none" class="btn btn-info btn-lg" data-toggle="modal"
+          data-target="#myModal">Open Small Modal
+  </button>
+
+  <!-- Modal -->
+
+
+  <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" style="width:100%;height: 100%">
+    <div class="modal-dialog" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" style="color: red;" data-dismiss="modal">&times;</button>
+        </div>
+        <br>
+        <div class="container" style="width:100%;height:50%;background:#5bc0de">
+          <h3>Add User Detils</h3>
+          <form data-toggle="validator" role="form" [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
+            <div class="form-group" style="width: 100%">
+              <label for="sel1">Select User Role</label>
+              <select class="form-control" id="sel1">
+                <option>Admin</option>
+                <option>Doctor</option>
+                <option>Patients</option>
+              </select>
+            </div>
+            <br>
+
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+              <input id="email" type="email" class="form-control" name="email" placeholder="Email" required [formControl]="complexForm.controls['email']">
+              </div>
+              <div *ngIf="complexForm.controls['email'].hasError('required') && complexForm.controls['email'].touched" class="alert alert-danger">You must include a email id</div>
+
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['password'].valid && complexForm.controls['password'].touched}">
+              <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+              <input id="password" type="password" class="form-control" name="password" placeholder="Password" required [formControl]="complexForm.controls['password']">
+              </div>
+
+              <div *ngIf="complexForm.controls['password'].hasError('required') && complexForm.controls['password'].touched" class="alert alert-danger">Enter a password</div>
+              <div *ngIf="complexForm.controls['password'].hasError('minlength') && complexForm.controls['password'].touched" class="alert alert-danger">Password must be at least 5 characters long.</div>
+              <div *ngIf="complexForm.controls['password'].hasError('maxlength') && complexForm.controls['password'].touched" class="alert alert-danger">Password cannot exceed 10 characters.</div>
+
+
+            </div>
+            <br>
+
+
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['firstName'].valid && complexForm.controls['firstName'].touched}">
+              <div class="input-group">
+              <span class="input-group-addon"></span>
+              <input type="text" class="form-control" name="firstName" required maxlength="10" minlength="2"
+                     placeholder="First Name" [formControl]="complexForm.controls['firstName']">
+              </div>
+              <div *ngIf="complexForm.controls['firstName'].hasError('required') && complexForm.controls['firstName'].touched" class="alert alert-danger">You must include a first name.</div>
+
+            </div>
+
+
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['lastName'].valid && complexForm.controls['lastName'].touched}">
+              <div class="input-group">
+              <span class="input-group-addon"></span>
+              <input type="text" class="form-control" name="lastName" required placeholder="Last Name" [formControl]="complexForm.controls['lastName']">
+              </div>
+              <div *ngIf="complexForm.controls['lastName'].hasError('required') && complexForm.controls['lastName'].touched" class="alert alert-danger">You must include a last name.</div>
+
+            </div>
+            <br>
+
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['location'].valid && complexForm.controls['location'].touched}">
+              <div class="input-group">
+              <span class="input-group-addon"></span>
+              <input type="text" class="form-control" name="location" placeholder="Location" required [formControl]="complexForm.controls['location']">
+              </div>
+                <div *ngIf="complexForm.controls['location'].hasError('required') && complexForm.controls['location'].touched" class="alert alert-danger">You must include a location.</div>
+            </div>
+            <br>
+
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['phone'].valid && complexForm.controls['phone'].touched}">
+              <div class="input-group">
+              <span class="input-group-addon"></span>
+              <input type="text" class="form-control" name="phone" placeholder="Phone Number" required [formControl]="complexForm.controls['phone']">
+              </div>
+              <div *ngIf="complexForm.controls['phone'].hasError('required') && complexForm.controls['phone'].touched" class="alert alert-danger">Enter a valid phone number</div>
+            </div>
+
+            <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['office'].valid && complexForm.controls['office'].touched}">
+              <div class="input-group">
+              <span class="input-group-addon"></span>
+              <input type="text" class="form-control" name="office" placeholder="Office Number" required [formControl]="complexForm.controls['office']">
+              </div>
+                <div *ngIf="complexForm.controls['office'].hasError('required') && complexForm.controls['office'].touched" class="alert alert-danger">You must include a office number.</div>
+
+            </div>
+            <br>
+            <div class="form-group">
+            <button type="submit" class="btn btn-info btn-lg"
+                    style="width: 30%;color: black;background: white;border-radius:20px;margin-right: 120px" [disabled]="!complexForm.valid">
+              submit
+            </button>
+
+            <button type="reset" class="btn btn-danger"
+                    style="border-radius: 10px;width: 30%;color: black;margin-left: 50px"
+                    data-dismiss="modal" (click)="close()">cancel
+            </button>
+            </div>
+          </form>
+          <br>
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+</div>
