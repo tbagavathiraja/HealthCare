@@ -12,15 +12,17 @@ export class DashboardComponent implements OnInit, DoCheck {
   dashboardClick;
 
   constructor(private appcomponent: AppComponent, private router: Router) {
+
   }
 
   ngOnInit() {
+
   }
 
   ngDoCheck() {
     this.dashboardClick = this.appcomponent.dashboardClick;
     this.addUser = this.appcomponent.addUser;
-    console.log('DDD' + this.appcomponent.dashboardClick);
+
   }
 
 }

@@ -8,8 +8,6 @@ import 'rxjs/add/operator/toPromise';
 
 export class LoginService {
 
-  function;
-
   constructor(private http: Http, private localStorage: LocalStorage) {
   }
 
@@ -30,7 +28,7 @@ export class LoginService {
 
 
   private extractData(res: Response) {
-   // console.log('extracting  ' + JSON.stringify(res));
+    // console.log('extracting  ' + JSON.stringify(res));
     return res.json();
   }
 

@@ -83,6 +83,25 @@ CREATE TABLE `user_session` (
   CONSTRAINT `fk_user_session` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
 ) ;
 
+CREATE TABLE doctor_history (
+history_id INT(25) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+doctor_id int(11) ,
+patient_id int(11) ,
+checked_time DATETIME NOT NULL,
+prescription VARCHAR(100) NOT NULL ,
+CONSTRAINT fk_doctor_history FOREIGN KEY (doctor_id) REFERENCES healthcare.`user`(user_id),
+CONSTRAINT fk_doctor_history_patient FOREIGN KEY (patient_id) REFERENCES healthcare.`user`(user_id)
+)
+
+CREATE TABLE doctor_domain(
+doctor_domain_id int(10) AUTO_INCREMENT PRIMARY KEY,
+doctor_id int (11),
+experience int(4) NOT NULL DEFAULT 1,
+speciality VARCHAR(20) NOT NULL,
+CONSTRAINT fk_doctor_domail FOREIGN KEY (doctor_id) REFERENCES healthcare.`user`(user_id) 
+);
+
+DROP TABLE healthcare.doctor_domain;
 
 
 

@@ -18,10 +18,8 @@
           <form data-toggle="validator" role="form" [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
             <div class="form-group" style="width: 100%">
               <label for="sel1">Select User Role</label>
-              <select class="form-control" id="sel1">
-                <option>Admin</option>
-                <option>Doctor</option>
-                <option>Patients</option>
+              <select class="form-control" id="sel1" name="role_id" (change)="getRole($event)">
+                <option *ngFor="let role of roles" [value]="role">{{role}}</option>
               </select>
             </div>
             <br>
@@ -115,4 +113,39 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button  #modalButton1 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal1"></button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div *ngIf="errMessage===''; else displayError">
+          <h4  class="modal-title">success</h4>
+          </div>
+          <ng-template #displayError>
+            <h4>New user creation Failed</h4>
+          </ng-template>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="errMessage == ''; else errorBlock">
+          <p >New {{selectedRole}} was successfully created{{errMessage}}</p>
+          </div>
+          <ng-template  #errorBlock><p>User already exist </p></ng-template>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 </div>
