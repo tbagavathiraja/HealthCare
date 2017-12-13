@@ -5,20 +5,23 @@ import 'rxjs/add/operator/toPromise';
 import {LocalStorage} from '../../app.localStorage';
 
 @Injectable()
-export class BookAppointmentService {
+export class GetusersService {
 
   constructor(private  http: Http, private localStorage: LocalStorage) {
   }
+
 
   createHeaders(headers: Headers) {
     headers.append('Content-Type', 'application/json');
     headers.append('x-user-token', this.localStorage.getItem('token'));
   }
 
-  showDoctors(): Promise<any> {
+
+  getUsers(role): Promise<any> {
     const headers = new Headers();
     this.createHeaders(headers);
-    return this.http.get(AppConstants.serverUrl + '/showdoctors')
+    console.log(JSON.stringify(headers));
+    return this.http.get(AppConstants.serverUrl + '/getusers/' + role, {headers: headers})
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);

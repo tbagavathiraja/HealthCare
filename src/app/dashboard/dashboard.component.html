@@ -1,4 +1,5 @@
 <app-adduser [show]="addUser">sdfsfd</app-adduser>
+
 <div class="row" id="dashboardComp" >
   <!-- uncomment code for absolute positioning tweek see top comment in css -->
   <!-- <div class="absolute-wrapper"> </div> -->
@@ -44,7 +45,7 @@
           <li><a href="#" class="btn btn-info btn-lg" ><span class="glyphicon glyphicon-user"></span>My profile</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
-          <li><a [routerLink]="'/bookappointment'" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
+          <li><a [routerLink]="['/getusers','doctor']" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-trophy"></span>Achievments</a></li>
 
           <!-- Dropdown-->
@@ -111,5 +112,4 @@
     </div>
   </div>
 </div>
-
 <router-outlet></router-outlet>

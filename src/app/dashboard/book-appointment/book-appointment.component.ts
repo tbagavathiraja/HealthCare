@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BookAppointmentService} from './book-appointment.service';
+import {DashboardComponent} from '../dashboard.component';
 
 @Component({
   selector: 'app-book-appointment',
@@ -8,14 +9,14 @@ import {BookAppointmentService} from './book-appointment.service';
 })
 export class BookAppointmentComponent implements OnInit {
 
-  constructor(private bookAppointmentService: BookAppointmentService) { }
+  userDetails;
 
-  ngOnInit() {
-
-    this.bookAppointmentService.showDoctord();
-
-
-
+  constructor(private bookAppointmentService: BookAppointmentService, private dashBoardComponent: DashboardComponent) {
   }
 
+  ngOnInit() {
+    this.userDetails = this.dashBoardComponent.usersByRole;
+    console.log(this.userDetails[0])
+
+  }
 }

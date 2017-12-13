@@ -11,13 +11,15 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {AddUserService} from './adduser/adduser.service';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
 import {BookAppointmentService} from './book-appointment/book-appointment.service';
+import { GetusersComponent } from './getusers/getusers.component';
+import {GetusersService} from './getusers/getusers.service';
 
 @NgModule({
   imports: [
     CommonModule, dashboardRouter, NavbarModule , FormsModule , ReactiveFormsModule
   ],
-  declarations: [DashboardComponent, AddUserComponent, BookAppointmentComponent ],
-  providers: [DashboardService, DashboardComponent , AddUserService , BookAppointmentService ],
+  declarations: [DashboardComponent, AddUserComponent, BookAppointmentComponent, GetusersComponent ],
+  providers: [GetusersService, DashboardService, DashboardComponent , AddUserService , BookAppointmentService ],
 })
 export class DashboardModule {
 }

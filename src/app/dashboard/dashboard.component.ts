@@ -10,6 +10,7 @@ import {AppComponent} from '../app.component';
 export class DashboardComponent implements OnInit, DoCheck {
   addUser;
   dashboardClick;
+  usersByRole = '';
 
   constructor(private appcomponent: AppComponent, private router: Router) {
 
