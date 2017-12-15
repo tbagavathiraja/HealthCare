@@ -3,13 +3,13 @@
 <!--<div class="form-group" style="width:500px; margin:0 auto;background-color: black;">
   <sq-datetimepicker [options]="options" [(ngModel)]="field1" ></sq-datetimepicker>
 </div>-->
-<div class="row" id="dashboardComp" >
+<div class="row" id="dashboardComp">
 
   <!-- uncomment code for absolute positioning tweek see top comment in css -->
   <!-- <div class="absolute-wrapper"> </div> -->
   <!-- Menu -->
-  <div class="side-menu"  [class.open]="dashboardClick" >
-    <nav class="navbar navbar-default" role="navigation" >
+  <div class="side-menu" [class.open]="dashboardClick">
+    <nav class="navbar navbar-default" role="navigation">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <div class="brand-wrapper">
@@ -18,7 +18,7 @@
           <!-- Brand -->
           <div class="brand-name-wrapper">
             <a class="navbar-brand" href="#">
-             HealthCare
+              HealthCare
             </a>
           </div>
 
@@ -46,10 +46,11 @@
       <div class="side-menu-container">
         <ul class="nav navbar-nav">
 
-          <li><a href="#" class="btn btn-info btn-lg" ><span class="glyphicon glyphicon-user"></span>My profile</a></li>
+          <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>My profile</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
-          <li><a [routerLink]="['getusers','doctor']" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
+          <li><a [routerLink]="['getusers','doctor']" class="btn btn-info btn-lg"><span
+            class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-trophy"></span>Achievments</a></li>
 
           <!-- Dropdown-->
@@ -64,37 +65,44 @@
                 <ul class="nav navbar-nav">
 
 
-                          <!-- List group -->
-                          <ul class="list-group" >
-                            <li class="list-group-item" style="background-color:#f2f4f7">
-                              doctors
-                              <div class="material-switch pull-right">
-                                <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox"/>
-                                <label for="someSwitchOptionDefault" class="label-default"></label>
-                              </div>
-                            </li>
-                            <li class="list-group-item" style="background-color:#f2f4f7">
-                             location
-                              <div class="material-switch pull-right">
-                                <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
-                                <label for="someSwitchOptionPrimary" class="label-primary"></label>
-                              </div>
-                            </li>
-                            <li class="list-group-item" style="background-color:#f2f4f7">
-                              gender
-                              <div class="material-switch pull-right">
-                                <input id="someSwitchOptionSuccess" name="someSwitchOption001" type="checkbox"/>
-                                <label for="someSwitchOptionSuccess" class="label-success"></label>
-                              </div>
-                            </li>
-                            <li class="list-group-item" style="background-color:#f2f4f7">
-                              specia
-                              <div class="material-switch pull-right">
-                                <input id="someSwitchOptionInfo" name="someSwitchOption001" type="checkbox"/>
-                                <label for="someSwitchOptionInfo" class="label-info"></label>
-                              </div>
-                            </li>
-                          </ul>
+                  <!-- List group -->
+                  <ul class="list-group">
+                    <li class="list-group-item" style="background-color:#f2f4f7">
+                      Speciality
+                      <div class="material-switch pull-right" >
+                        <input id="someSwitchOptionDefault" (change)="showSpecialist=!showSpecialist" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionDefault" class="label-default"></label>
+                      </div>
+                    </li>
+
+                    <div *ngIf="showSpecialist" class="form-group" style="width: 100%">
+                      <label for="sel1">Select Specialist</label>
+                      <select class="form-control" id="sel1" name="role_id"  (change)="getSpecialist($event)">
+                        <option *ngFor="let specialist of specialists;let i=index " #indexValue [value]="specialist">{{specialist}}</option>
+                      </select>
+                    </div>
+
+                    <div *ngIf="showSpecialist" class="btn-success">
+                      <p>{{description[selectedSpecialist]}}</p>
+
+                    </div>
+
+
+                    <li class="list-group-item" style="background-color:#f2f4f7">
+                      location
+                      <div class="material-switch pull-right">
+                        <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                        <label for="someSwitchOptionPrimary" class="label-primary"></label>
+                      </div>
+                    </li>
+
+                    <li class="list-group-item" style="background-color:#f2f4f7">
+                      <br>
+                      <input class="btn btn-info" id="someSwitchOptionInfo" style="width: 170px" value="sumbit"
+                             name="someSwitchOption001" type="submit"/>
+                      <label for="someSwitchOptionInfo" class="label-info"></label>
+                    </li>
+                  </ul>
 
                 </ul>
               </div>
