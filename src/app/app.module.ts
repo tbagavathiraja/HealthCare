@@ -10,11 +10,13 @@ import {CommonModule} from '@angular/common';
 import {LocalStorage} from './app.localStorage';
 import {NavbarModule} from './dashboard/navbar/navbar.module';
 import {DashboardModule} from './dashboard/dashboard.module';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule, HttpModule

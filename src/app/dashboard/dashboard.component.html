@@ -1,6 +1,10 @@
 <app-adduser [show]="addUser">sdfsfd</app-adduser>
-
+<app-datepicker></app-datepicker>
+<!--<div class="form-group" style="width:500px; margin:0 auto;background-color: black;">
+  <sq-datetimepicker [options]="options" [(ngModel)]="field1" ></sq-datetimepicker>
+</div>-->
 <div class="row" id="dashboardComp" >
+
   <!-- uncomment code for absolute positioning tweek see top comment in css -->
   <!-- <div class="absolute-wrapper"> </div> -->
   <!-- Menu -->
@@ -45,7 +49,7 @@
           <li><a href="#" class="btn btn-info btn-lg" ><span class="glyphicon glyphicon-user"></span>My profile</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
-          <li><a [routerLink]="['/getusers','doctor']" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
+          <li><a [routerLink]="['getusers','doctor']" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-trophy"></span>Achievments</a></li>
 
           <!-- Dropdown-->

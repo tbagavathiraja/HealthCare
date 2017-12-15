@@ -1,6 +1,6 @@
 <div class="container">
   <button #modalButton type="button" style="display: none" class="btn btn-info btn-lg" data-toggle="modal"
-          data-target="#myModal">Open Small Modal
+          data-target="#myModal">
   </button>
 
   <!-- Modal -->
@@ -95,17 +95,17 @@
 
             </div>
             <br>
-            <div class="form-group">
-            <button type="submit" class="btn btn-info btn-lg"
-                    style="width: 30%;color: black;background: white;border-radius:20px;margin-right: 120px" [disabled]="!complexForm.valid">
-              submit
-            </button>
+              <div class="form-group">
+              <button type="submit" class="btn btn-info btn-lg"
+                      style="width: 30%;color: black;background: white;border-radius:20px;margin-right: 120px" [disabled]="!complexForm.valid">
+                submit
+              </button>
 
-            <button type="reset" class="btn btn-danger"
-                    style="border-radius: 10px;width: 30%;color: black;margin-left: 50px"
-                    data-dismiss="modal" (click)="close()">cancel
-            </button>
-            </div>
+              <button type="reset" class="btn btn-danger"
+                      style="border-radius: 10px;width: 30%;color: black;margin-left: 50px"
+                      data-dismiss="modal" (click)="close()">cancel
+              </button>
+              </div>
           </form>
           <br>
         </div>

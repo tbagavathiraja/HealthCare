@@ -20,7 +20,6 @@ export class GetusersService {
   getUsers(role): Promise<any> {
     const headers = new Headers();
     this.createHeaders(headers);
-    console.log(JSON.stringify(headers));
     return this.http.get(AppConstants.serverUrl + '/getusers/' + role, {headers: headers})
       .toPromise()
       .then(this.extractData)

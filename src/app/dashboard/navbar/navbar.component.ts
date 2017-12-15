@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
     editHistory: ''
   };
 
-  constructor(private appComponent: AppComponent , private dashboardComponent: DashboardComponent , private  router: Router) {
+  constructor(private appComponent: AppComponent, private dashboardComponent: DashboardComponent, private  router: Router) {
   }
 
   manageUsers(event) {
@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit {
   }
 
   setDashboardClick() {
+    console.log('NAVBAR CLICKED' + this.appComponent.dashboardClick);
     this.appComponent.dashboardClick = !this.appComponent.dashboardClick;
   }
 

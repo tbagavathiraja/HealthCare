@@ -6,9 +6,13 @@ import {GetusersComponent} from './getusers/getusers.component';
 
 const dashboardRoute: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'bookappointment', component: BookAppointmentComponent},
-  {path: 'getusers/:role', component: GetusersComponent }
+  { path: 'dashboard', component: DashboardComponent,
+    children: [
+     // { path: '', redirectTo: 'bookappointment', pathMatch: 'full' },
+      { path: 'bookappointment', component: BookAppointmentComponent },
+      { path: 'getusers/:role', component: GetusersComponent }
+    ]
+  }
 ];
 
 export const dashboardRouter: ModuleWithProviders = RouterModule.forChild(dashboardRoute);

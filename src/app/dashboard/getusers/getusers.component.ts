@@ -19,6 +19,7 @@ export class GetusersComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.route.params.subscribe(params => {
       this.role = params['role'];
     });
@@ -33,7 +34,7 @@ export class GetusersComponent implements OnInit {
       .then((roleUserDetails) => {
       //  console.log(this.role + ' : ' + JSON.stringify(roleUserDetails));
         this.dashboardComponent.usersByRole = roleUserDetails;
-        this.router.navigate(['/bookappointment'], roleUserDetails);
+        this.router.navigate(['dashboard/bookappointment']);
       })
       .catch((error) => {
         console.log(error);

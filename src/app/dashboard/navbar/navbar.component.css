@@ -17,3 +17,9 @@ div.btn-group-vertical{
   color: #2e6da4;
   width: 170px;
 }
+.btn.nohover:hover {
+  /* here copy default .btn class styles */
+  cursor:default !important;
+  color: red;
+  /* or something like that */
+}

@@ -10,10 +10,10 @@ export class AppComponent implements DoCheck {
   title = 'app';
   dashboardClick = false;
   showIncludes = true;
-addUser = false;
+  addUser = false;
 
   ngDoCheck() {
-    // console.log(this.dashboardClick);
+    /*console.log('in APP' + this.dashboardClick);*/
   }
 }
 
