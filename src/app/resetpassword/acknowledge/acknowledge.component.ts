@@ -84,6 +84,7 @@ export class AcknowledgeComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('COmooenent acknoeledge');
   }
 
 }

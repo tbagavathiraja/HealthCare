@@ -10,16 +10,16 @@ import {CommonModule} from '@angular/common';
 import {LocalStorage} from './app.localStorage';
 import {NavbarModule} from './dashboard/navbar/navbar.module';
 import {DashboardModule} from './dashboard/dashboard.module';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
-
+import {FormsModule } from '@angular/forms'
+import {ReactiveFormsModule} from "@angular/forms";
+import {ResetpasswordModule} from "./resetpassword/resetpassword.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ResetpasswordComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule, HttpModule
+  FormsModule , ReactiveFormsModule , ResetpasswordModule ,  BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule, HttpModule
   ],
   providers: [Utility, LocalStorage , AppComponent ],
   bootstrap: [AppComponent],

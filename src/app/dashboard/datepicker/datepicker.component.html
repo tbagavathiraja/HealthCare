@@ -1,3 +1,34 @@
+
+
+<!-- input box styling is bootstrap 3.3.7 -->
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" novalidate>
+  <div class="input-group">
+    <input class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="myDate"
+           formControlName="myDate" [options]="myOptions" #dp="ngx-mydatepicker"/>
+
+    <span class="input-group-btn">
+            <button type="button" class="btn btn-default" (click)="dp.clearDate()">
+                <i class="glyphicon glyphicon-remove"></i>
+            </button>
+            <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </button>
+        </span>
+  </div>
+
+  <div class="btnGroup">
+    <button class="button" type="submit" [disabled]="myForm.controls.myDate.errors">Submit</button>
+    <p class="error" *ngIf="myForm.controls.myDate.errors">Date is required!</p>
+  </div>
+</form>
+
+
+
+
+
+
+
+<!--
 <form>
   <div class="input-group">
     <input class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="mydate"
@@ -13,3 +44,4 @@
         </span>
   </div>
 </form>
+-->
