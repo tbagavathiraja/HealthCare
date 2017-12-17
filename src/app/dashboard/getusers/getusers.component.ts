@@ -23,8 +23,8 @@ export class GetusersComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.role = params['role'];
     });
-
-    this.getUserDetails();
+    this.router.navigate(['dashboard/bookappointment']);
+   // this.getUserDetails();
   }
 
   getUserDetails() {

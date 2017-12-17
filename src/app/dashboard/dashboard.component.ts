@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit, DoCheck {
   };
   addUser;
   dashboardClick;
-  usersByRole = '';
+  usersByRole = [{"user_id":2,"mail_id":"abc@gmail.com","name":"testtest","location":"coimbatore","phone_number":"9092773180"},{"user_id":4,"mail_id":"def@gmail.com","name":"bakstest","location":"chennai","phone_number":"8790952344"},{"user_id":5,"mail_id":"123@gmail.com","name":"xyzhhbhhkb","location":"coimbatore","phone_number":"9876432112"}];
   selectedSpecialist = 'ENT';
   showSpecialist = false;
   showDescription = false;

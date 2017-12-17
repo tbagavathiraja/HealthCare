@@ -66,7 +66,29 @@ Appointment form
 
         <div class="modal-footer">
 
-            <button type="submit" class="btn btn-default"
+
+          <!-- input box styling is bootstrap 3.3.7 -->
+          <div class="container" style="float: right;width:300px">
+            <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" novalidate>
+              <div class="input-group">
+                <input class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="myDate"
+                       formControlName="myDate" [options]="myOptions" #dp="ngx-mydatepicker"/>
+
+                <span class="input-group-btn">
+
+            <button type="button" class="btn btn-default" (click)="dp.toggleCalendar()">
+                <i class="glyphicon glyphicon-calendar"></i>
+            </button>
+        </span>
+              </div>
+              <div class="time">
+                <input type="time" [(ngModel)]="mytime" name="usr_time">
+              </div>
+              <div class="btnGroup">
+                <button class="button" type="submit" >Submit</button>
+                <p class="error" *ngIf="myForm.controls.myDate.errors">Date is required!</p>
+
+          <button type="submit" class="btn btn-default" [disabled]="myForm.controls.myDate.errors"
                     style="width: 30%;color: black;border-radius:15px;margin-right: 120px" >
               Appointment
             </button>
@@ -76,6 +98,8 @@ Appointment form
                     data-dismiss="modal" (click)="showDetails=false">cancel
             </button>
           </div>
+          </form>
+        </div>
 
         </div>
       </div>

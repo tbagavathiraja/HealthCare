@@ -17,19 +17,12 @@ export class DatepickerComponent implements OnInit {
     firstDayOfWeek: 'mo',
     sunHighlight: true,
     satHighlight: true,
-    disableUntil: {
-      year: this.currentDate.getFullYear(),
-      month: this.currentDate.getMonth() + 1,
-      day: this.currentDate.getDate() - 1
-    }, showTodayBtn: true,
-    disableSince: {year: 2000, month: 1, day: 1},
+    showTodayBtn: true,
+    disableUntil: {year:this.currentDate.getFullYear(), month:this.currentDate.getMonth()+1, day:this.currentDate.getDate()-1},
     markCurrentDay: true,
-    markCurrentMonth: true,
-    markCurrentYear: true,
     minYear: 2000,
     maxYear: 3000,
     disableWeekends: true,
-    showWeekNumbers: true
   };
   // Initialized to specific date (09.10.2018)
   model: any = {jsdate: new Date()};
