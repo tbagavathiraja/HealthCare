@@ -16,19 +16,27 @@ export class DashboardComponent implements OnInit, DoCheck {
     Podiatrist: 'A podiatrist diagnoses and treats conditions of the foot, ankle, leg, and their surrounding structures.',
     Physical_therapist: 'A physical therapist is a highly trained and licensed medical professional that provides many different types of services. Physical therapists work with people of all ages, sizes, and abilities.',
   };
+  locations = ['chennai', 'coimbatore', 'trichy', 'madurai'];
   addUser;
   dashboardClick;
-  usersByRole = [{"user_id":2,"mail_id":"abc@gmail.com","name":"testtest","location":"coimbatore","phone_number":"9092773180"},{"user_id":4,"mail_id":"def@gmail.com","name":"bakstest","location":"chennai","phone_number":"8790952344"},{"user_id":5,"mail_id":"123@gmail.com","name":"xyzhhbhhkb","location":"coimbatore","phone_number":"9876432112"}];
+  usersByRole = '';
   selectedSpecialist = 'ENT';
   showSpecialist = false;
+  showLocation = false;
   showDescription = false;
+  selectedLocation = '';
 
   constructor(private appcomponent: AppComponent, private router: Router) {
 
   }
 
   ngOnInit() {
+    console.log('In dashboards', this.appcomponent.isLoggedIn());
+  }
 
+  getLocation(event) {
+    this.selectedLocation = this.locations[event.target.value];
+    this.showLocation = true;
   }
 
   getSpecialist(event) {

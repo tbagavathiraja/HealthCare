@@ -15,10 +15,10 @@ export class BookAppointmentService {
     headers.append('x-user-token', this.localStorage.getItem('token'));
   }
 
-  showDoctors(): Promise<any> {
+  bookAppointment(users): Promise<any> {
     const headers = new Headers();
     this.createHeaders(headers);
-    return this.http.get(AppConstants.serverUrl + '/showdoctors')
+    return this.http.post(AppConstants.serverUrl + '/bookappointment', users, {headers: headers})
       .toPromise()
       .then(this.extractData)
       .catch(this.handleError);

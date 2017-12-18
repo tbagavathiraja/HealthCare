@@ -1,0 +1,52 @@
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button  #modalButton3 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3"></button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4  class="modal-title">My Profile </h4>
+          </div>
+        <table class="table">
+            <thead>
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Location</th>
+              <th>Role</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <tr class="success">
+              <td>{{myProfile['first_name']}}</td>
+              <td>{{myProfile.last_name}}</td>
+              <td>{{myProfile.mail_id}}</td>
+              <td>{{myProfile.phone_number}}</td>
+              <td>{{myProfile.location}}</td>
+              <td>{{myProfile.role_type_name}}</td>
+
+            </tr>
+            </tbody>
+          </table>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+

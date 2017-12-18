@@ -3,6 +3,7 @@ import {AppComponent} from '../../app.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AddUserService} from './adduser.service';
 import {LocalStorage} from '../../app.localStorage';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-adduser',
@@ -29,7 +30,7 @@ export class AddUserComponent implements OnInit, OnChanges {
   complexForm: FormGroup;
   errMessage = '';
 
-  constructor(private appComponent: AppComponent,
+  constructor(private localStorage: LocalStorage, private router: Router, private appComponent: AppComponent,
               private  fb: FormBuilder, private userService: AddUserService) {
     this.createForm();
 
@@ -61,12 +62,19 @@ export class AddUserComponent implements OnInit, OnChanges {
     this.userService.addUser(this.newUser)
       .then((response) => {
         console.log('RES : ' + JSON.stringify(response));
-        if (response.status === '3500') {
-          this.errMessage = 'User alreadey Exist';
-          console.log('EEEEEEEEEEEE' + this.errMessage);
-          this.modalButton1.nativeElement.click();
+        if (response.status === 'INVALID_TOKEN') {
+          console.log('INVALID_TOKEN');
+          console.log('NAVIGATING');
+          this.localStorage.setItem('timeout', 'true');
+          this.router.navigate(['login']);
         } else {
-          this.modalButton1.nativeElement.click();
+          if (response.status === '3500') {
+            this.errMessage = 'User alreadey Exist';
+            console.log('EEEEEEEEEEEE' + this.errMessage);
+            this.modalButton1.nativeElement.click();
+          } else {
+            this.modalButton1.nativeElement.click();
+          }
         }
         this.reset();
       })

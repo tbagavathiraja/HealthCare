@@ -62,13 +62,15 @@ Appointment form
               <p>{{users.mail_id}}</p>
               <p> {{users.location}}</p>
               <p>{{users.phone_number}}</p>
+            <p>{{users.speciality}}</p>
+
           </div>
 
         <div class="modal-footer">
 
 
           <!-- input box styling is bootstrap 3.3.7 -->
-          <div class="container" style="float: right;width:300px">
+          <div class="container" style="float: right;width:210px">
             <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)" novalidate>
               <div class="input-group">
                 <input class="form-control" style="float:none" placeholder="Select a date" ngx-mydatepicker name="myDate"
@@ -81,20 +83,19 @@ Appointment form
             </button>
         </span>
               </div>
-              <div class="time">
-                <input type="time" [(ngModel)]="mytime" name="usr_time">
+              <div  class="time" style="width:100%;position:relative;top:-50px;left:-400px;float: left;">
+                <input type="time" value="{{curr_Time}}" id="myTime" name="usr_time">
               </div>
               <div class="btnGroup">
-                <button class="button" type="submit" >Submit</button>
                 <p class="error" *ngIf="myForm.controls.myDate.errors">Date is required!</p>
 
-          <button type="submit" class="btn btn-default" [disabled]="myForm.controls.myDate.errors"
-                    style="width: 30%;color: black;border-radius:15px;margin-right: 120px" >
+          <button type="submit" data-dismiss="modal" class="btn btn-default" [disabled]="myForm.controls.myDate.errors"
+                   (click)="onSubmit(myForm.value)" style="position:relative;top:40px;left:-320px;float: left;width: 100%;color: black;border-radius:15px;">
               Appointment
             </button>
 
             <button type="button" class="btn btn-default"
-                    style="border-radius: 15px;color:black;width: 30%;color: black;margin-left: 50px"
+                    style="border-radius: 15px;color:black;width: 100%;color: black;margin-left: 36px"
                     data-dismiss="modal" (click)="showDetails=false">cancel
             </button>
           </div>
@@ -109,5 +110,5 @@ Appointment form
 
 </div>
 
-
+</div>
 

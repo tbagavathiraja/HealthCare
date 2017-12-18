@@ -2,9 +2,10 @@ import {Component, OnInit} from '@angular/core';
 import {BookAppointmentService} from './book-appointment.service';
 import {DashboardComponent} from '../dashboard.component';
 import {ElementRef, ViewChild} from '@angular/core';
-
+import {LocalStorage} from '../../app.localStorage';
 import {INgxMyDpOptions, IMyDateModel} from 'ngx-mydatepicker';
-import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
+import {Local} from 'protractor/built/driverProviders';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class BookAppointmentComponent implements OnInit {
   currentDate = new Date();
   myOptions: INgxMyDpOptions = {
     todayBtnTxt: 'Today',
-    dateFormat: 'yyyy-mm-dd',
+    dateFormat: 'yyyy:mm:dd',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
     satHighlight: true,
@@ -37,9 +38,12 @@ export class BookAppointmentComponent implements OnInit {
   };
   // Initialized to specific date (09.10.2018)
   model: any = {jsdate: new Date()};
-  private myForm: FormGroup;
+  myForm: FormGroup;
+  mytime = ' ';
+  curr_Time = '';
+  booking: {};
 
-  constructor(private formBuilder: FormBuilder, private bookAppointmentService: BookAppointmentService, private dashBoardComponent: DashboardComponent) {
+  constructor(private localStorage: LocalStorage, private formBuilder: FormBuilder, private bookAppointmentService: BookAppointmentService, private dashBoardComponent: DashboardComponent) {
   }
 
   ngOnInit() {
@@ -55,6 +59,7 @@ export class BookAppointmentComponent implements OnInit {
       // other controls are here...
     });
 
+    this.curr_Time = this.currentDate.getHours() + ':' + this.currentDate.getMinutes() + ':' + this.currentDate.getSeconds();
   }
 
   getDetails(index) {
@@ -77,14 +82,29 @@ export class BookAppointmentComponent implements OnInit {
       }
     });
   }
-mytime = ' ' ;
+
   clearDate(): void {
     // Clear the date using the patchValue function
     this.myForm.patchValue({myDate: null});
   }
 
   onSubmit(value: any) {
-    console.log(this.mytime + 'SELECTED DATE : ' + JSON.stringify(value.myDate.formatted));
+    //  console.log(JSON.stringify(document.getElementById('myTime')) + 'SELECTED DATE : ' + JSON.stringify(value.myDate.formatted));
+    this.users.time = this.curr_Time;
+    this.users.date = JSON.stringify(value.myDate.formatted);
+    this.users.date = this.users.date.substring(1, this.users.date.length - 1);
+    this.users.patient_id = JSON.parse(this.localStorage.getObject('userDetails'))['user_id'];
+    console.log(this.users);
+    console.log('SUBMITTED');
+    this.bookAppointmentService.bookAppointment(this.users)
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
   }
 
   // optional date changed callback

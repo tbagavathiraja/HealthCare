@@ -1,5 +1,5 @@
 
-    <div class="container" style="background-color: #403833;width: 100%">
+    <div class="container" style="background-color: #403833;width: 100%;height: 150%">
 
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2 text">
@@ -43,14 +43,15 @@
               <button type="submit" class="btn">Sign in!</button>
               <div class="alert alert-danger" *ngIf="errMessage != ''">{{errMessage}}.
               </div><br>
-              <div><p routerLink="/resetpassword">forgot password</p></div>
+              <div><a [routerLink]="['../resetpassword']"  style="color: white;top: 330px;cursor:pointer;position: absolute" >forgot password</a></div>
+            <br>
             </form>
           </div>
 
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" style="height: 100%;background-color: #403833">
         <div class="col-sm-6 col-sm-offset-3 social-login">
           <h3>...or login with:</h3>
           <div class="social-login-buttons">
@@ -67,3 +68,29 @@
         </div>
       </div>
     </div>
+
+
+
+    <div class="container">
+      <!-- Trigger the modal with a button -->
+      <button  #modalButton6 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal6"></button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="myModal6" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4  class="modal-title">Session expired</h4>
+
+            <div class="modal-footer">
+              <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-right: 210px" class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close</button>
+            </div>
+          </div>
+          </div>
+        </div>
+
+        </div>
+      </div>

@@ -1,0 +1,86 @@
+
+<div class="container" style="width: 70%">
+  <!-- Trigger the modal with a button -->
+  <button  #modalButton4 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal4"></button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal4" role="dialog" >
+    <div class="modal-dialog" style="width: 80%">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4  class="modal-title">My Profile </h4>
+        </div>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Location</th>
+            <th>Role</th>
+
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr class="success">
+            <td>{{myProfile['first_name']}}</td>
+            <td>{{myProfile.last_name}}</td>
+            <td>{{myProfile.phone_number}}</td>
+            <td>{{myProfile.location}}</td>
+          </tr>
+          <tr class="danger">
+            <td><input [(ngModel)]="newProfile.firstName" style="width: 160px" type="text"> </td>
+            <td><input [(ngModel)]="newProfile.lastName" style="width: 160px" type="text"> </td>
+            <td><input [(ngModel)]="newProfile.phone" style="width: 160px" type="text"> </td>
+            <td><input [(ngModel)]="newProfile.location" style="width: 160px" type="text"> </td>
+          </tr>
+
+
+          </tbody>
+        </table>
+<input type="submit" class="btn btn-info" value="submit" (click)="updateProfile()">
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="clear">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button  #modalButton5 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal5"></button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal5" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div *ngIf="errMessage===''; else displayError">
+            <h4  class="modal-title">profile successfully updated</h4>
+          </div>
+          <ng-template #displayError>
+            <h4>failed to update profile</h4>
+          </ng-template>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal"  (click)="clearErr();">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

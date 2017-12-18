@@ -45,9 +45,9 @@
       <div class="side-menu-container">
         <ul class="nav navbar-nav">
 
-          <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>My profile</a></li>
+          <li><a href="#" routerLink="./myprofile" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>My profile</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
-          <li><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
+          <li><a href="#" routerLink="./editprofile" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
           <li><a [routerLink]="['getusers','doctor']" class="btn btn-info btn-lg"><span
             class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
           <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-trophy"></span>Achievments</a></li>
@@ -90,12 +90,20 @@
                     <li class="list-group-item" style="background-color:#f2f4f7">
                       location
                       <div class="material-switch pull-right">
-                        <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                        <input id="someSwitchOptionPrimary" (change)="showLocation=!showLocation" name="someSwitchOption001" type="checkbox"/>
                         <label for="someSwitchOptionPrimary" class="label-primary"></label>
                       </div>
                     </li>
 
-                    <li class="list-group-item" style="background-color:#f2f4f7">
+                    <div *ngIf="showLocation" class="form-group" style="width: 100%">
+                      <label for="sel1">Select Location</label>
+                      <select class="form-control" id="sel1" name="role_id"  (change)="getLocation($event)">
+                        <option *ngFor="let location of locations;let i=index " #indexValue [value]="i">{{location}}</option>
+                        <option *ngFor="let location of locations;let i=index " #indexValue [value]="i">{{location}}</option>
+                      </select>
+                    </div>
+
+                      <li class="list-group-item" style="background-color:#f2f4f7">
                       <br>
                       <input class="btn btn-info" id="someSwitchOptionInfo" style="width: 170px" value="sumbit"
                              name="someSwitchOption001" type="submit"/>
@@ -117,7 +125,7 @@
   <!-- Main Content -->
   <div class="container-fluid">
     <div class="side-body">
-      <h1> Main Content here </h1>
+      <h1> </h1>
 
 
     </div>

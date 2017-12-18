@@ -10,18 +10,20 @@ import {CommonModule} from '@angular/common';
 import {LocalStorage} from './app.localStorage';
 import {NavbarModule} from './dashboard/navbar/navbar.module';
 import {DashboardModule} from './dashboard/dashboard.module';
-import {FormsModule } from '@angular/forms'
-import {ReactiveFormsModule} from "@angular/forms";
-import {ResetpasswordModule} from "./resetpassword/resetpassword.module";
+import {FormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ResetpasswordModule} from './resetpassword/resetpassword.module';
+import {AuthGuardService} from './auth-guard.service';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-  FormsModule , ReactiveFormsModule , ResetpasswordModule ,  BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule, HttpModule
+    FormsModule, ReactiveFormsModule, ResetpasswordModule, BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule, HttpModule
   ],
-  providers: [Utility, LocalStorage , AppComponent ],
+  providers: [Utility, LocalStorage, AppComponent , AuthGuardService],
+  exports: [ AppComponent] ,
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
