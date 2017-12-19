@@ -15,6 +15,7 @@ import {Local} from 'protractor/built/driverProviders';
 })
 export class BookAppointmentComponent implements OnInit {
   @ViewChild('modalButton2') modalButton2: ElementRef;
+  @ViewChild('modalButton7') modalButton7: ElementRef;
   userDetails;
   showDetails = false;
   users;
@@ -48,6 +49,55 @@ export class BookAppointmentComponent implements OnInit {
 
   ngOnInit() {
     this.userDetails = this.dashBoardComponent.usersByRole;
+
+    let temp = [];
+    console.log('in bookig appointment');
+    if (this.dashBoardComponent.showSpecialist && this.dashBoardComponent.showLocation) {
+
+
+      for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
+        console.log(this.dashBoardComponent.usersByRole[iloop]);
+        let userObj = this.dashBoardComponent.usersByRole[iloop];
+        if (userObj['location'] === this.dashBoardComponent.selectedLocation && userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
+          console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
+          temp.push(this.dashBoardComponent.usersByRole[iloop]);
+        }
+      }
+      this.userDetails = temp;
+      console.log('Filtered : ', temp);
+      console.log('filter by location', this.dashBoardComponent.selectedLocation);
+
+
+      console.log('filtering by both');
+    } else if (this.dashBoardComponent.showLocation) {
+      for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
+        console.log(this.dashBoardComponent.usersByRole[iloop]);
+        let userObj = this.dashBoardComponent.usersByRole[iloop];
+        if (userObj['location'] === this.dashBoardComponent.selectedLocation) {
+          //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
+          temp.push(this.dashBoardComponent.usersByRole[iloop]);
+        }
+      }
+      this.userDetails = temp;
+      console.log('Filtered : ', temp);
+      console.log('filter by location', this.dashBoardComponent.selectedLocation);
+    } else if (this.dashBoardComponent.showSpecialist) {
+
+
+      for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
+        console.log(this.dashBoardComponent.usersByRole[iloop]);
+        let userObj = this.dashBoardComponent.usersByRole[iloop];
+        if (userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
+          //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
+          temp.push(this.dashBoardComponent.usersByRole[iloop]);
+        }
+      }
+      this.userDetails = temp;
+      console.log('Filtered : ', temp);
+    } else {
+      console.log('showing all doctors');
+      this.userDetails = this.dashBoardComponent.usersByRole;
+    }
     console.log(JSON.stringify(this.userDetails));
     this.myForm = this.formBuilder.group({
       // Empty string or null means no initial value. Can be also specific date for
@@ -66,7 +116,6 @@ export class BookAppointmentComponent implements OnInit {
     this.users = this.userDetails[index];
     this.showDetails = true;
     this.modalButton2.nativeElement.click();
-
   }
 
   setDate(): void {
@@ -98,6 +147,10 @@ export class BookAppointmentComponent implements OnInit {
     console.log('SUBMITTED');
     this.bookAppointmentService.bookAppointment(this.users)
       .then((result) => {
+        if (result.status === 'success') {
+          this.modalButton7.nativeElement.click();
+        }
+
         console.log(result);
       })
       .catch((err) => {

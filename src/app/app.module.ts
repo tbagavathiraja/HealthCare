@@ -13,8 +13,6 @@ import {DashboardModule} from './dashboard/dashboard.module';
 import {FormsModule} from '@angular/forms';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ResetpasswordModule} from './resetpassword/resetpassword.module';
-import {AuthGuardService} from './auth-guard.service';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -22,7 +20,7 @@ import {AuthGuardService} from './auth-guard.service';
   imports: [
     FormsModule, ReactiveFormsModule, ResetpasswordModule, BrowserModule, AuthenticationModule, routes, NavbarModule, DashboardModule, CommonModule, HttpModule
   ],
-  providers: [Utility, LocalStorage, AppComponent , AuthGuardService],
+  providers: [Utility, LocalStorage, AppComponent ],
   exports: [ AppComponent] ,
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

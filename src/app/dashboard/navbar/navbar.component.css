@@ -1,3 +1,11 @@
+/* CSS used here will be applied after bootstrap.css */
+.badge-notify{
+  background:red;
+  position:relative;
+  top: -20px;
+  left: -35px;
+}
+
 .affix {
   top: 0;
   width: 100%;

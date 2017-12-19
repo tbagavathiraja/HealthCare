@@ -1,3 +1,4 @@
+<app-navbar *ngIf="showIncludes"></app-navbar>
 <app-adduser [show]="addUser">sdfsfd</app-adduser>
 <!--<div class="form-group" style="width:500px; margin:0 auto;background-color: black;">
   <sq-datetimepicker [options]="options" [(ngModel)]="field1" ></sq-datetimepicker>
@@ -54,7 +55,7 @@
 
           <!-- Dropdown-->
           <li class="panel panel-default" id="dropdown">
-            <a class="btn btn-info btn-lg" data-toggle="collapse" href="#dropdown-lvl1">
+            <a class="btn btn-info btn-lg" (click)="toggle=!toggle" data-toggle="collapse" href="#dropdown-lvl1">
               <span class="glyphicon glyphicon-filter"></span> Filter <span class="caret"></span>
             </a>
 
@@ -83,7 +84,6 @@
 
                     <div *ngIf="showSpecialist" class="btn-success">
                       <p>{{description[selectedSpecialist]}}</p>
-
                     </div>
 
 
@@ -99,24 +99,29 @@
                       <label for="sel1">Select Location</label>
                       <select class="form-control" id="sel1" name="role_id"  (change)="getLocation($event)">
                         <option *ngFor="let location of locations;let i=index " #indexValue [value]="i">{{location}}</option>
-                        <option *ngFor="let location of locations;let i=index " #indexValue [value]="i">{{location}}</option>
                       </select>
-                    </div>
 
+                    </div>
                       <li class="list-group-item" style="background-color:#f2f4f7">
                       <br>
-                      <input class="btn btn-info" id="someSwitchOptionInfo" style="width: 170px" value="sumbit"
-                             name="someSwitchOption001" type="submit"/>
+                      <input class="btn btn-info" id="someSwitchOptionInfo" style="margin-bottom: 10px;width: 170px" value="sumbit"
+                             name="someSwitchOption001" (click)="getInfo()" type="submit"/>
                       <label for="someSwitchOptionInfo" class="label-info"></label>
                     </li>
+
                   </ul>
 
                 </ul>
+
               </div>
             </div>
           </li>
 
         </ul>
+<div *ngIf="toggle">
+  <input  class="btn btn-info" style="padding-bottom: 16px;width: 180px" value="sumbit"
+               name="someSwitchOption001" type="submittt"/>
+</div>
       </div><!-- /.navbar-collapse -->
     </nav>
 

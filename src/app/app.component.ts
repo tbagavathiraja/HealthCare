@@ -11,15 +11,17 @@ export class AppComponent implements DoCheck {
   dashboardClick = false;
   showIncludes = false;
   addUser = false;
-  isLogged = true;
+  userRole = '';
+  userName = '';
+  newAppointment = 0;
+  patientDetails;
+
 
   ngDoCheck() {
     /*console.log('in APP' + this.dashboardClick);*/
   }
 
-  isLoggedIn() {
-    return this.isLogged;
-  }
+
 }
 
 

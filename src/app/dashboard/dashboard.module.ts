@@ -19,14 +19,14 @@ import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { MyprofileComponent } from './myprofile/myprofile.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import {LogoutService} from './logout/logout.service';
-import {AppComponent} from '../app.component';
+import {AuthGuardService} from './auth-guard.service';
 
 @NgModule({
   imports: [
      CommonModule, dashboardRouter, NavbarModule, FormsModule, ReactiveFormsModule , NgxMyDatePickerModule.forRoot()
   ],
   declarations: [DashboardComponent, AddUserComponent, BookAppointmentComponent, GetusersComponent, DatepickerComponent, MyprofileComponent, EditprofileComponent],
-  providers: [LogoutService , EditprofileService , GetusersService, DashboardService, DashboardComponent, AddUserService, BookAppointmentService],
+  providers: [AuthGuardService , LogoutService , EditprofileService , GetusersService, DashboardService, DashboardComponent, AddUserService, BookAppointmentService],
 
 })
 export class DashboardModule {

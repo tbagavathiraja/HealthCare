@@ -1,69 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-
-
 <div class="btn nohover btn-info btn-lg" style="width: 100%;cursor: default">
 
-  <div class="container-fluid" >
+  <div class="container-fluid">
 
     <nav class="navbar " data-spy="affix" data-offset-top="197">
       <div class="container-fluid">
-        <div class="navbar-header" >
-          <a class="navbar-brand" style="color: white;border-radius: 20px">HEALTCARE</a>
+        <div class="navbar-header">
+          <a class="navbar-brand" style="color: white;border-radius: 20px">HEALTHCARE</a>
         </div>
+        <!--        <div class="container">
+                  <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+                    <span class="glyphicon glyphicon-comment"></span>
+                  </button>
+                  <span class="badge badge-notify">5</span>
+                </div>-->
         <ul class="nav navbar-nav">
           <li class="active"><a (click)="setDashboardClick()"> Dashboard</a></li>
 
-          <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:5px;"><a class="dropdown-toggle" style="color: #0f0f0f;border-radius: 20px;"  data-toggle="dropdown" href="#" (click)="manageClick=!manageClick">Manage users<span class="caret"></span></a>
+          <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:5px;"><a class="dropdown-toggle"
+                                                                                       style="color: #0f0f0f;border-radius: 20px;"
+                                                                                       data-toggle="dropdown" href="#"
+                                                                                       (click)="manageClick=!manageClick">Manage
+            users<span class="caret"></span></a>
 
             <div class="btn-group-vertical" *ngIf="manageClick" style="border-radius: 15px;z-index: 999;">
 
-              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="add" (click)="manageUsers($event)">Add User</button>
-              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="view" (click)="manageUsers($event)">view All users</button>
-              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="remove" (click)="manageUsers($event)">remove user</button>
+              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="add"
+                      (click)="manageUsers($event)">Add User
+              </button>
+              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="view"
+                      (click)="manageUsers($event)">view All users
+              </button>
             </div>
 
 
-            <ul class="dropdown-menu" id="add-dropdown" style="border-radius: 15px;" >
+            <ul class="dropdown-menu" id="add-dropdown" style="border-radius: 15px;">
 
               <div class="btn-group-vertical" style="border-radius: 15px">
 
-                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="add" (click)="manageUsers($event)">Add User</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="add"
+                        (click)="manageUsers($event)">Add User
+                </button>
 
-                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="view" (click)="manageUsers($event)">view All users</button><button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="remove" (click)="manageUsers($event)">remove user</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="view"
+                        (click)="manageUsers($event)">view All users
+                </button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="remove"
+                        (click)="manageUsers($event)">remove user
+                </button>
               </div>
             </ul>
           </li>
-          <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:29px"><a class="dropdown-toggle"  data-toggle="dropdown" href="#" style="color: #0f0f0f;border-radius:20px" (click)="adminClick=!adminClick">Admin<span class="caret"></span></a>
+          <li *ngIf="getRole()==='doctor'"><a style="color: #0f0f0f;border-radius:20px" data-toggle="modal"
+                                              data-target="#myModal9" (click)="setshowDetails()">New Appoinements <span
+            class="badge">{{statusCount  }}</span></a></li>
+          <li><a style="color: #0f0f0f;border-radius:20px" (click)="myProfile()">Welcome {{userName}}</a>
+            <!--       <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:29px"><a class="dropdown-toggle"  data-toggle="dropdown" href="#" style="color: #0f0f0f;border-radius:20px" (click)="adminClick=!adminClick">Admin<span class="caret"></span></a>
 
-            <div *ngIf="adminClick" class="btn-group-vertical" style="border-radius: 15px">
-              <button type="button" class="btn btn-info btn-lg" style="background-color:#5bc0de;" value="view" (click)="manageUsers($event)">view history</button>
-              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="edit" (click)="manageUsers($event)">edit history</button>
-            </div>
-
+                 <div *ngIf="adminClick" class="btn-group-vertical" style="border-radius: 15px">
+                     <button type="button" class="btn btn-info btn-lg" style="background-color:#5bc0de;" value="view" (click)="manageUsers($event)">view history</button>
+                     <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="edit" (click)="manageUsers($event)">edit history</button>
+                   </div>
+       -->
 
             <ul class="dropdown-menu" style="border-radius: 15px">
 
               <div class="btn-group-vertical" style="border-radius: 15px">
-                <button type="button" class="btn btn-info btn-lg" style="background-color:#5bc0de;" value="view" (click)="manageUsers($event)">view history</button>
-                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="edit" (click)="manageUsers($event)">edit history</button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color:#5bc0de;" value="view"
+                        (click)="manageUsers($event)">view history
+                </button>
+                <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="edit"
+                        (click)="manageUsers($event)">edit history
+                </button>
               </div>
 
             </ul>
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="btn btn-info btn-lg" style="color: #0f0f0f;border-radius: 20px" (click)="logoutService.logoutUser()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+          <li><a class="btn btn-info btn-lg" style="color: #0f0f0f;border-radius: 20px"
+                 (click)="logoutService.logoutUser()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
     </nav>
@@ -72,6 +87,83 @@
 </div>
 
 
+<div class="container " *ngIf="showDetails&&statusCount>0">
+  <!-- Trigger the modal with a button -->
+  <button #modalButton9 style="display: none;" type="button" class="btn btn-info btn-lg" data-toggle="modal"
+          data-target="#myModal9"></button>
 
-</body>
-</html>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal9" role="dialog">
+    <div class="modal-dialog" style="width: 70%;height: 40vh">
+
+      <!-- Modal content-->
+      <div class="modal-content ">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Patient details </h4>
+        </div>
+
+
+        <div class="container profile   " style="width: 60%">
+          <div class="row ">
+            <div class="span12">
+              <div class="well well-small clearfix">
+                <div class="row-fluid">
+
+                  <div class="span4 btn-default" [attr.id]="'details'+i" *ngFor="let patient of patientDetails;let i=index">
+                    <h2>{{patient['name']}} </h2>
+                    <ul class="unstyled" style="list-style-type: none;" (click)="showButtons(i)">
+                      <li>
+                        <span class="glyphicon glyphicon-earphone"></span>
+                        {{patient['phone_number']}}
+                      </li>
+                      <li>
+                        <span class="glyphicon glyphicon-envelope"></span>
+                        {{patient['mail_id']}}
+                      </li>
+                      <li><i class="fa fa-map-marker" aria-hidden="true"></i>
+
+                        {{patient['location']}}
+                      </li>
+
+                      <li><i class="fa fa-clock-o" aria-hidden="true"></i>
+
+                        {{patient['appointment_time']}}
+                      </li>
+
+                      <li><span class="glyphicon">&#xe109;</span>
+
+                        {{patient['appointment_date']}}
+                      </li>
+
+                    </ul>
+                    <div class="modal-footer" [attr.id]="'button'+i" style="display: none">
+                      <button type="button" style="border-radius: 10px;width: 35%;color: black;float: left"
+                              class="btn btn-success" data-dismiss="modal" >accept
+                      </button>
+                      <button type="button" style="border-radius: 10px;width: 35%;color: black;margin-left: 50px"
+                              class="btn btn-default" data-dismiss="modal" >reject
+                      </button>
+                    </div>
+                  </div>
+                  <!--Body content-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" style="border-radius: 10px;width: 30%;color: black;margin-left: 50px"
+                    class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+

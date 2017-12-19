@@ -1,4 +1,4 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
+import {Component, OnInit, DoCheck, OnDestroy, ElementRef, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {AppComponent} from '../app.component';
 
@@ -7,7 +7,7 @@ import {AppComponent} from '../app.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, DoCheck {
+export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   specialists = ['ENT', 'Dermatologist', 'Neurologist', 'Podiatrist', 'Physical_therapist'];
   description = {
     ENT: 'An ENT doctor specializes in conditions and disorders that affect the areas in and around your ears, nose, and throat.',
@@ -16,22 +16,51 @@ export class DashboardComponent implements OnInit, DoCheck {
     Podiatrist: 'A podiatrist diagnoses and treats conditions of the foot, ankle, leg, and their surrounding structures.',
     Physical_therapist: 'A physical therapist is a highly trained and licensed medical professional that provides many different types of services. Physical therapists work with people of all ages, sizes, and abilities.',
   };
+  toggle = false;
+  showDetails = false;
   locations = ['chennai', 'coimbatore', 'trichy', 'madurai'];
   addUser;
   dashboardClick;
   usersByRole = '';
+  @ViewChild('modalButton9') modalButton9: ElementRef;
   selectedSpecialist = 'ENT';
   showSpecialist = false;
   showLocation = false;
   showDescription = false;
-  selectedLocation = '';
+  selectedLocation = 'chennai';
+  showIncludes = false;
+  isLogged = true;
+  userRole = '';
+  checkboxValue: boolean;
 
   constructor(private appcomponent: AppComponent, private router: Router) {
 
   }
 
+  isLoggedIn() {
+    return this.isLogged;
+  }
+
+  filterService() {
+    console.log(this.checkboxValue);
+  }
+
+  getInfo() {
+    /* console.log('in dashboard')
+     if (this.showSpecialist && this.showLocation) {
+       console.log('filtering by both');
+     }else if (this.showLocation) {
+       console.log('filter by location', this.selectedLocation);
+     } else if (this.showSpecialist) {
+       console.log('filtering by specialist', this.selectedSpecialist);
+     }*/
+    this.router.navigate(['dashboard/getusers', 'doctor']);
+
+  }
+
   ngOnInit() {
-    console.log('In dashboards', this.appcomponent.isLoggedIn());
+    this.showIncludes = true;
+    console.log(this.userRole);
   }
 
   getLocation(event) {
@@ -48,6 +77,12 @@ export class DashboardComponent implements OnInit, DoCheck {
     this.dashboardClick = this.appcomponent.dashboardClick;
     this.addUser = this.appcomponent.addUser;
 
+
   }
+
+  ngOnDestroy() {
+    this.showIncludes = false;
+  }
+
 
 }

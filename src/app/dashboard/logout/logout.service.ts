@@ -3,11 +3,11 @@ import {Headers, Http, Response} from '@angular/http';
 import {AppConstants} from '../../app.constants';
 import 'rxjs/add/operator/toPromise';
 import {LocalStorage} from '../../app.localStorage';
-import {AppComponent} from '../../app.component';
+import {DashboardComponent} from '../dashboard.component';
 import {Router} from '@angular/router';
 @Injectable()
 export class LogoutService {
-  constructor(private  http: Http, private localStorage: LocalStorage , private router: Router , private appComponent: AppComponent) {
+  constructor(private  http: Http, private localStorage: LocalStorage , private router: Router , private dashboardComponent: DashboardComponent) {
   }
 
 
@@ -24,11 +24,10 @@ export class LogoutService {
       .then((response) => {
 
         console.log('Loggin out..');
-        this.appComponent.showIncludes = false;
-        this.appComponent.dashboardClick = false;
-        this.appComponent.isLogged = false;
-        this.localStorage.removeItem('token')
-        console.log(this.appComponent.showIncludes)
+        this.dashboardComponent.showIncludes = false;
+        this.dashboardComponent.dashboardClick = false;
+        this.dashboardComponent.isLogged = false;
+        this.localStorage.clear();
         this.router.navigate(['/login']);
       })
       .catch((error) => {

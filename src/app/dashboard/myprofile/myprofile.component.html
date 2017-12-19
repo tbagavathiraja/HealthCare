@@ -1,19 +1,19 @@
 
-<div class="container">
+<div class="container "  >
   <!-- Trigger the modal with a button -->
   <button  #modalButton3 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal3"></button>
 
   <!-- Modal -->
   <div class="modal fade" id="myModal3" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="width: 80%;height: 40vh">
 
       <!-- Modal content-->
-      <div class="modal-content">
+      <div class="modal-content "  >
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4  class="modal-title">My Profile </h4>
           </div>
-        <table class="table">
+        <!--<table class="table">
             <thead>
             <tr>
               <th>Firstname</th>
@@ -37,10 +37,34 @@
 
             </tr>
             </tbody>
-          </table>
+          </table>-->
 
+        <div class="container profile   " style="width: 50%">
+          <div class="row ">
+            <div class="span12">
+              <div class="well well-small clearfix">
+                <div class="row-fluid">
+                  <div class="span2">
+                    <img src="http://www.pvhc.net/img148/gcywviadbesjihlphsiz.png" class="img-polaroid"/>
+                  </div>
+                  <div class="span4 btn-default">
+                    <h2>{{myProfile['first_name']}} {{myProfile['last_name']}} </h2>
+                    <ul class="unstyled" style="list-style-type: none;">
+                      <li>
+                        <span class="glyphicon glyphicon-earphone"></span>
+                      {{myProfile['phone_number']}}</li>
+                      <li>
+                        <span class="glyphicon glyphicon-envelope"></span>
+                       {{myProfile['mail_id']}}</li>
+                      <li><i class="fa fa-map-marker" aria-hidden="true"></i>
 
-
+                        {{myProfile['location']}}</li>
+                    </ul>
+                  </div>
+                  <!--Body content-->
+                </div>
+              </div>
+            </div>
         </div>
         <div class="modal-footer">
           <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close</button>
@@ -50,3 +74,5 @@
     </div>
   </div>
 
+  </div>
+</div>
