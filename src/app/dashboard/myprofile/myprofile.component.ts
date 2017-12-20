@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LocalStorage} from '../../app.localStorage';
 import {ElementRef, ViewChild} from '@angular/core';
-
 @Component({
   selector: 'app-myprofile',
   templateUrl: './myprofile.component.html',

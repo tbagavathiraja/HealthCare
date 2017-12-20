@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {INgxMyDpOptions, IMyDateModel} from 'ngx-mydatepicker';
-import {FormGroup, FormControl, FormBuilder, Validators} from "@angular/forms";
+import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-datepicker',
@@ -18,7 +18,7 @@ export class DatepickerComponent implements OnInit {
     sunHighlight: true,
     satHighlight: true,
     showTodayBtn: true,
-    disableUntil: {year:this.currentDate.getFullYear(), month:this.currentDate.getMonth()+1, day:this.currentDate.getDate()-1},
+    disableUntil: {year: this.currentDate.getFullYear(), month: this.currentDate.getMonth() + 1, day: this.currentDate.getDate() - 1},
     markCurrentDay: true,
     minYear: 2000,
     maxYear: 3000,
@@ -63,7 +63,7 @@ export class DatepickerComponent implements OnInit {
   }
 
   onSubmit(value: any) {
-    console.log("SELECTED DATE : " + JSON.stringify(value));
+    console.log('SELECTED DATE : ' + JSON.stringify(value));
   }
 
   // optional date changed callback

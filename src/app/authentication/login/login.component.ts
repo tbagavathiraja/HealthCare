@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
             this.appComponent.userRole = response.role_type_name;
             if (response.role_type_name === 'doctor') {
               this.appComponent.newAppointment = response.appointmentStatus.length;
-              this.appComponent.patientDetails = response.appointmentStatus
+              this.appComponent.patientDetails = response.appointmentStatus;
             }
 
             if (response.role_type_name === 'admin' || response.role_type_name === 'doctor' || response.role_type_name === 'patient') {

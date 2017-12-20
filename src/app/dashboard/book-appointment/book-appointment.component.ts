@@ -22,7 +22,7 @@ export class BookAppointmentComponent implements OnInit {
   currentDate = new Date();
   myOptions: INgxMyDpOptions = {
     todayBtnTxt: 'Today',
-    dateFormat: 'yyyy:mm:dd',
+    dateFormat: 'yyyy-mm-dd',
     firstDayOfWeek: 'mo',
     sunHighlight: true,
     satHighlight: true,
@@ -138,10 +138,10 @@ export class BookAppointmentComponent implements OnInit {
   }
 
   onSubmit(value: any) {
-    //  console.log(JSON.stringify(document.getElementById('myTime')) + 'SELECTED DATE : ' + JSON.stringify(value.myDate.formatted));
-    this.users.time = this.curr_Time;
-    this.users.date = JSON.stringify(value.myDate.formatted);
-    this.users.date = this.users.date.substring(1, this.users.date.length - 1);
+    console.log(JSON.stringify(document.getElementById('myTime')['value']) + 'SELECTED DATE : ' + JSON.stringify(value.myDate.formatted));
+    this.users.time = document.getElementById('myTime')['value'];
+    this.users.date = value.myDate.formatted;
+   // this.users.date = this.users.date.substring(1, this.users.date.length - 1);
     this.users.patient_id = JSON.parse(this.localStorage.getObject('userDetails'))['user_id'];
     console.log(this.users);
     console.log('SUBMITTED');

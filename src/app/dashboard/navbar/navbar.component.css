@@ -6,6 +6,10 @@
   left: -35px;
 }
 
+.openBackground{
+  background-color: #449D44;
+}
+
 .affix {
   top: 0;
   width: 100%;

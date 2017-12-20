@@ -16,12 +16,10 @@
         <table class="table">
           <thead>
           <tr>
-            <th>Firstname</th>
-            <th>Lastname</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Location</th>
-            <th>Role</th>
+            <th style="text-align: center">Firstname</th>
+            <th style="text-align: center">Lastname</th>
+            <th style="text-align: center">Phone</th>
+            <th style="text-align: center">Location</th>
 
           </tr>
           </thead>
@@ -34,10 +32,10 @@
             <td>{{myProfile.location}}</td>
           </tr>
           <tr class="danger">
-            <td><input [(ngModel)]="newProfile.firstName" style="width: 160px" type="text"> </td>
-            <td><input [(ngModel)]="newProfile.lastName" style="width: 160px" type="text"> </td>
-            <td><input [(ngModel)]="newProfile.phone" style="width: 160px" type="text"> </td>
-            <td><input [(ngModel)]="newProfile.location" style="width: 160px" type="text"> </td>
+            <td><input [(ngModel)]="newProfile.firstName" style="width: 200px" type="text"> </td>
+            <td><input [(ngModel)]="newProfile.lastName" style="width:200px" type="text"> </td>
+            <td><input [(ngModel)]="newProfile.phone" style="width: 200px" type="text"> </td>
+            <td><input [(ngModel)]="newProfile.location" style="width: 200px" type="text"> </td>
           </tr>
 
 
@@ -48,7 +46,7 @@
 
       </div>
       <div class="modal-footer">
-        <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="clear">Close</button>
+        <a ><button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="clearErr()">Close</button></a>
       </div>
     </div>
 
@@ -76,7 +74,7 @@
           </ng-template>
         </div>
         <div class="modal-footer">
-          <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal"  (click)="clearErr();">Close</button>
+          <a><button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal"  >Close</button></a>
         </div>
       </div>
 

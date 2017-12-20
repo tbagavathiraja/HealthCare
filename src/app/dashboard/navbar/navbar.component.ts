@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import {AppComponent} from '../../app.component';
 import {LocalStorage} from '../../app.localStorage';
 import {LogoutService} from '../logout/logout.service';
-import {ElementRef, ViewChild} from '@angular/core';
+import {AppointmentStatusUpdateService} from './appointmentStatusUpdate.service';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +13,6 @@ import {ElementRef, ViewChild} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  @ViewChild('modalButton9', {read: ElementRef}) modalButton9: ElementRef;
   userName = '';
   manageUser = {
     addUser: '',
@@ -31,7 +30,7 @@ export class NavbarComponent implements OnInit {
   showDetails = false;
   patientDetails;
 
-  constructor(public logoutService: LogoutService, private localStorage: LocalStorage, private appComponent: AppComponent, private dashboardComponent: DashboardComponent, private  router: Router) {
+  constructor(private updateStatus: AppointmentStatusUpdateService, public logoutService: LogoutService, private localStorage: LocalStorage, private appComponent: AppComponent, private dashboardComponent: DashboardComponent, private  router: Router) {
   }
 
   manageUsers(event) {
@@ -47,16 +46,13 @@ export class NavbarComponent implements OnInit {
 
   setshowDetails() {
     this.showDetails = !this.showDetails;
-    if (this.showDetails) {
-      this.modalButton9.nativeElement.click();
-    }
   }
 
   showButtons(index) {
 
-    if(document.getElementById('button' + index).style.display === 'block'){
+    if (document.getElementById('button' + index).style.display === 'block') {
       document.getElementById('button' + index).style.display = 'none';
-    }else{
+    } else {
       document.getElementById('button' + index).style.display = 'block';
     }
   }
@@ -80,6 +76,33 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  acceptPatient(index, status) {
+    const data = {
+      doctor_id: this.patientDetails[index]['doctor_id'],
+      patient_id: this.patientDetails[index]['patient_id'],
+      date_time: this.patientDetails[index]['date_time']
+    };
+    console.log(status)
+    this.updateStatus.updateStatus(data, status)
+      .then((response) => {
+        console.log(response);
+        if (response.status === 'success') {
+          this.patientDetails[index]['status'] = 0;
+          if (this.statusCount > 1) {
+            const temp = this.patientDetails[index];
+            this.patientDetails.splice(index, 1);
+            this.patientDetails.push(temp);
+          }
+          this.statusCount = this.statusCount - 1;
+
+          console.log('satus update successfully....');
+        }
+      }).catch((err) => {
+      console.log(err);
+    });
+
+  }
+
   getRole() {
     if (this.dashboardComponent.isLogged) {
       console.log('user_role', this.appComponent.userRole);
@@ -88,7 +111,6 @@ export class NavbarComponent implements OnInit {
   }
 
   setDashboardClick() {
-    console.log('NAVBAR CLICKED' + this.appComponent.dashboardClick);
     this.appComponent.dashboardClick = !this.appComponent.dashboardClick;
   }
 
