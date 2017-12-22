@@ -1,4 +1,5 @@
 import {Component, DoCheck} from '@angular/core';
+import {LocalStorage} from './app.localStorage';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,17 @@ export class AppComponent implements DoCheck {
   userName = '';
   newAppointment = 0;
   patientDetails;
+  usersByRole ;
 
+  constructor(private localStorage: LocalStorage) {
+  }
 
   ngDoCheck() {
-    /*console.log('in APP' + this.dashboardClick);*/
+    this.userRole = this.localStorage.getItem('role');
+    if (this.userRole === 'doctor' && !this.patientDetails === undefined && !this.patientDetails === null)  {
+      this.patientDetails = this.localStorage.getObject('userDetails')['appointmentStatus'];
+      this.newAppointment = this.patientDetails.length;
+    }
   }
 
 

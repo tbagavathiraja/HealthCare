@@ -16,11 +16,9 @@ export class AuthGuardService implements CanActivate {
       this.auth.showIncludes = false;
       this.auth.dashboardClick = false;
       this.localStorage.clear();
-      console.log('RRRRRRR' + this.auth.showIncludes);
       this.router.navigate(['/login']);
       return false;
     } else {
-      console.log('TTTTTTTTTT');
     }
     return true;
   }

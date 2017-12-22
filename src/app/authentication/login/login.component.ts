@@ -25,8 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('ONNNNNNNNNNNNNNNNN' + this.localStorage.getItem('timeout'));
-    this.localStorage.clear();
+        this.localStorage.clear();
     if (this.localStorage.getItem('timeout') === 'true') {
       console.log('YYYYYYYYYYYYYYYYYYAAAAAAAAAAA');
       this.modalButton6.nativeElement.click();
@@ -49,6 +48,7 @@ export class LoginComponent implements OnInit {
             this.localStorage.setItem('token', response.session_auth_token);
             this.localStorage.setObject('userDetails', response);
             this.localStorage.setItem('role', response.role_type_name);
+            this.localStorage.setItem('user_id', response.user_id);
             this.appComponent.showIncludes = true;
             this.dasboardComponent.showIncludes = true;
             this.dasboardComponent.isLogged = true;

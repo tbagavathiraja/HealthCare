@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, DoCheck} from '@angular/core';
 import {DashboardComponent} from '../dashboard.component';
 import {Router} from '@angular/router';
 import {AppComponent} from '../../app.component';
@@ -11,7 +11,7 @@ import {AppointmentStatusUpdateService} from './appointmentStatusUpdate.service'
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, DoCheck {
 
   userName = '';
   manageUser = {
@@ -82,12 +82,16 @@ export class NavbarComponent implements OnInit {
       patient_id: this.patientDetails[index]['patient_id'],
       date_time: this.patientDetails[index]['date_time']
     };
-    console.log(status)
+    console.log(status);
     this.updateStatus.updateStatus(data, status)
       .then((response) => {
         console.log(response);
         if (response.status === 'success') {
-          this.patientDetails[index]['status'] = 0;
+          if (status === 'accepted') {
+            this.patientDetails[index]['status'] = 0;
+          } else {
+            this.patientDetails[index]['status'] = -1;
+          }
           if (this.statusCount > 1) {
             const temp = this.patientDetails[index];
             this.patientDetails.splice(index, 1);
@@ -105,7 +109,6 @@ export class NavbarComponent implements OnInit {
 
   getRole() {
     if (this.dashboardComponent.isLogged) {
-      console.log('user_role', this.appComponent.userRole);
       return this.appComponent.userRole;
     }
   }
@@ -118,4 +121,7 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
+  ngDoCheck() {
+
+  }
 }

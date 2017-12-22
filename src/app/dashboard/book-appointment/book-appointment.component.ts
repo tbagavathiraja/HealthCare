@@ -1,22 +1,23 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, DoCheck, Input} from '@angular/core';
 import {BookAppointmentService} from './book-appointment.service';
 import {DashboardComponent} from '../dashboard.component';
 import {ElementRef, ViewChild} from '@angular/core';
 import {LocalStorage} from '../../app.localStorage';
 import {INgxMyDpOptions, IMyDateModel} from 'ngx-mydatepicker';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import {Local} from 'protractor/built/driverProviders';
-
+import {DashboardService} from '../dashboard.service';
+import {AppComponent} from '../../app.component';
+import {GetusersService} from '../getusers/getusers.service';
 
 @Component({
   selector: 'app-book-appointment',
   templateUrl: './book-appointment.component.html',
   styleUrls: ['./book-appointment.component.css']
 })
-export class BookAppointmentComponent implements OnInit {
+export class BookAppointmentComponent implements OnInit, DoCheck {
   @ViewChild('modalButton2') modalButton2: ElementRef;
   @ViewChild('modalButton7') modalButton7: ElementRef;
-  userDetails;
+  userDetails = [];
   showDetails = false;
   users;
   currentDate = new Date();
@@ -37,6 +38,7 @@ export class BookAppointmentComponent implements OnInit {
     maxYear: 3000,
     disableWeekends: true,
   };
+  searchKey = '';
   // Initialized to specific date (09.10.2018)
   model: any = {jsdate: new Date()};
   myForm: FormGroup;
@@ -44,21 +46,50 @@ export class BookAppointmentComponent implements OnInit {
   curr_Time = '';
   booking: {};
 
-  constructor(private localStorage: LocalStorage, private formBuilder: FormBuilder, private bookAppointmentService: BookAppointmentService, private dashBoardComponent: DashboardComponent) {
+  constructor(private getUserService: GetusersService, private dashboardService: DashboardService, private localStorage: LocalStorage,
+              private formBuilder: FormBuilder, private bookAppointmentService: BookAppointmentService,
+              private dashBoardComponent: DashboardComponent) {
+  }
+
+  ngDoCheck() {
+
+    this.dashboardService.getSearchKey().subscribe((key) => {
+      console.log(key);
+      console.log(key.length);
+      if (typeof key !== 'undefined' && key !== null) {
+        if (key.length > 0) {
+          this.userDetails = this.userDetails.filter(this.checkKey);
+        }
+      }
+    });
   }
 
   ngOnInit() {
-    this.userDetails = this.dashBoardComponent.usersByRole;
+    this.getUserService.getUsers('doctor')
+      .then((roleUserDetails) => {
+        console.log('no err');
+        this.userDetails = roleUserDetails;
+        console.log(roleUserDetails);
+      })
+      .catch((error) => {
+        console.log('error');
+        console.log(error);
+      });
 
-    let temp = [];
+    // this.userDetails = this.appComponent.usersByRole;
+    this.dashboardService.getSearchKey().subscribe((key) =>
+      this.searchKey = key
+    );
+    const temp = [];
     console.log('in bookig appointment');
     if (this.dashBoardComponent.showSpecialist && this.dashBoardComponent.showLocation) {
 
 
       for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
         console.log(this.dashBoardComponent.usersByRole[iloop]);
-        let userObj = this.dashBoardComponent.usersByRole[iloop];
-        if (userObj['location'] === this.dashBoardComponent.selectedLocation && userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
+        const userObj = this.dashBoardComponent.usersByRole[iloop];
+        if (userObj['location'] === this.dashBoardComponent.selectedLocation &&
+          userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
           console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
           temp.push(this.dashBoardComponent.usersByRole[iloop]);
         }
@@ -72,7 +103,7 @@ export class BookAppointmentComponent implements OnInit {
     } else if (this.dashBoardComponent.showLocation) {
       for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
         console.log(this.dashBoardComponent.usersByRole[iloop]);
-        let userObj = this.dashBoardComponent.usersByRole[iloop];
+        const userObj = this.dashBoardComponent.usersByRole[iloop];
         if (userObj['location'] === this.dashBoardComponent.selectedLocation) {
           //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
           temp.push(this.dashBoardComponent.usersByRole[iloop]);
@@ -86,7 +117,7 @@ export class BookAppointmentComponent implements OnInit {
 
       for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
         console.log(this.dashBoardComponent.usersByRole[iloop]);
-        let userObj = this.dashBoardComponent.usersByRole[iloop];
+        const userObj = this.dashBoardComponent.usersByRole[iloop];
         if (userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
           //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
           temp.push(this.dashBoardComponent.usersByRole[iloop]);
@@ -96,7 +127,6 @@ export class BookAppointmentComponent implements OnInit {
       console.log('Filtered : ', temp);
     } else {
       console.log('showing all doctors');
-      this.userDetails = this.dashBoardComponent.usersByRole;
     }
     console.log(JSON.stringify(this.userDetails));
     this.myForm = this.formBuilder.group({
@@ -141,7 +171,7 @@ export class BookAppointmentComponent implements OnInit {
     console.log(JSON.stringify(document.getElementById('myTime')['value']) + 'SELECTED DATE : ' + JSON.stringify(value.myDate.formatted));
     this.users.time = document.getElementById('myTime')['value'];
     this.users.date = value.myDate.formatted;
-   // this.users.date = this.users.date.substring(1, this.users.date.length - 1);
+    // this.users.date = this.users.date.substring(1, this.users.date.length - 1);
     this.users.patient_id = JSON.parse(this.localStorage.getObject('userDetails'))['user_id'];
     console.log(this.users);
     console.log('SUBMITTED');
@@ -163,6 +193,33 @@ export class BookAppointmentComponent implements OnInit {
   // optional date changed callback
   onDateChanged(event: IMyDateModel): void {
     // date selected
+  }
+
+  checkValue(value) {
+    console.log('Type of : ', value, 'ttttt', typeof this.userDetails);
+    if (typeof value === 'object') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  checkUndefinedType(value) {
+    if (typeof value !== 'undefined') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  private checkKey(value) {
+    if (this.searchKey !== undefined && this.searchKey !== null) {
+      console.log('METHOD ', value['name']);
+      console.log(this.searchKey);
+      return value['name'].indexOf('a') !== -1;
+    } else {
+      return false;
+    }
   }
 
 

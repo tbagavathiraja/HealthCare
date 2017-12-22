@@ -1,6 +1,7 @@
 import {Component, OnInit, DoCheck, OnDestroy, ElementRef, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {AppComponent} from '../app.component';
+import {DashboardService} from './dashboard.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,7 +22,7 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   locations = ['chennai', 'coimbatore', 'trichy', 'madurai'];
   addUser;
   dashboardClick;
-  usersByRole = '';
+  usersByRole ;
   @ViewChild('modalButton9') modalButton9: ElementRef;
   selectedSpecialist = 'ENT';
   showSpecialist = false;
@@ -32,8 +33,9 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   isLogged = true;
   userRole = '';
   checkboxValue: boolean;
+  searchKey = '';
 
-  constructor(private appcomponent: AppComponent, private router: Router) {
+  constructor(private dashboardService: DashboardService, private appcomponent: AppComponent, private router: Router) {
 
   }
 
@@ -76,7 +78,10 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   ngDoCheck() {
     this.dashboardClick = this.appcomponent.dashboardClick;
     this.addUser = this.appcomponent.addUser;
+  }
 
+  search(event) {
+   // this.dashboardService.setSearchKey(event.target.value);
 
   }
 

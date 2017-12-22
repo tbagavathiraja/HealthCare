@@ -30,6 +30,7 @@
     "jquery": "^3.2.1",
     "moment-timezone": "^0.5.14",
     "ng-pick-datetime": "^5.0.0-beta.15",
+    "ng2-search-filter": "^0.3.1",
     "ngx-datetime-picker": "^2.0.0",
     "ngx-eonasdan-datetimepicker": "^1.0.5",
     "ngx-mydatepicker": "^2.3.4",

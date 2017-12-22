@@ -15,18 +15,20 @@ import {GetusersService} from './getusers/getusers.service';
 import {DatepickerComponent} from './datepicker/datepicker.component';
 import {EditprofileService} from './editprofile/editprofile.service';
 
-import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
-import { MyprofileComponent } from './myprofile/myprofile.component';
-import { EditprofileComponent } from './editprofile/editprofile.component';
+import {NgxMyDatePickerModule} from 'ngx-mydatepicker';
+import {MyprofileComponent} from './myprofile/myprofile.component';
+import {EditprofileComponent} from './editprofile/editprofile.component';
 import {LogoutService} from './logout/logout.service';
 import {AuthGuardService} from './auth-guard.service';
-
+import {HistoryComponent} from './history/history.component';
+import {HistoryService} from './history/history.service';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   imports: [
-     CommonModule, dashboardRouter, NavbarModule, FormsModule, ReactiveFormsModule , NgxMyDatePickerModule.forRoot()
+    Ng2SearchPipeModule, CommonModule, dashboardRouter, NavbarModule, FormsModule, ReactiveFormsModule, NgxMyDatePickerModule.forRoot()
   ],
-  declarations: [DashboardComponent, AddUserComponent, BookAppointmentComponent, GetusersComponent, DatepickerComponent, MyprofileComponent, EditprofileComponent],
-  providers: [AuthGuardService , LogoutService , EditprofileService , GetusersService, DashboardService, DashboardComponent, AddUserService, BookAppointmentService],
+  declarations: [DashboardComponent, AddUserComponent, BookAppointmentComponent, GetusersComponent, DatepickerComponent, MyprofileComponent, EditprofileComponent, HistoryComponent],
+  providers: [HistoryService, AuthGuardService, LogoutService, EditprofileService, GetusersService, DashboardService, DashboardComponent, AddUserService, BookAppointmentService],
 
 })
 export class DashboardModule {

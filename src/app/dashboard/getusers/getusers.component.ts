@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {DashboardComponent} from '../dashboard.component';
 import {LocalStorage} from '../../app.localStorage';
 import {ElementRef, ViewChild} from '@angular/core';
+import {AppComponent} from '../../app.component';
+import {DoCheck} from '@angular/core';
 
 @Component({
   selector: 'app-getusers',
@@ -18,9 +20,10 @@ export class GetusersComponent implements OnInit {
   userDetails = '';
   current_user = '';
   showDetails = false;
+
   @ViewChild('modalButton8') modalButton8: ElementRef;
 
-  constructor(private localStorage: LocalStorage, private userService: GetusersService, private route: ActivatedRoute,
+  constructor(private appComponent: AppComponent, private localStorage: LocalStorage, private userService: GetusersService, private route: ActivatedRoute,
               private router: Router, private dashboardComponent: DashboardComponent) {
 
   }
@@ -45,13 +48,13 @@ export class GetusersComponent implements OnInit {
           this.localStorage.setItem('timeout', 'true');
           this.router.navigate(['login']);
         } else if (this.role === 'doctor') {
-          console.log(this.role + ' : ' + JSON.stringify(roleUserDetails));
           this.dashboardComponent.usersByRole = roleUserDetails;
+          this.appComponent.userRole = roleUserDetails;
+
           this.router.navigate(['dashboard/bookappointment']);
+
         } else {
           this.userDetails = roleUserDetails;
-          console.log('good');
-          console.log('user details', this.userDetails);
 
           this.showUsers = true;
         }

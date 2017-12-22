@@ -1,0 +1,7 @@
+.table td {
+  text-align: center;
+}
+#info:hover{
+  color: white;
+  cursor: pointer;
+}

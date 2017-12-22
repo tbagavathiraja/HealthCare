@@ -6,8 +6,11 @@
   left: -35px;
 }
 
-.openBackground{
+.openAccept{
   background-color: #449D44;
+}
+.openReject{
+  background-color: #DA5F5C;
 }
 
 .affix {

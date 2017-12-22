@@ -5,7 +5,7 @@
     <nav class="navbar " data-spy="affix" data-offset-top="197">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" style="color: white;border-radius: 20px">HEALTHCARE</a>
+          <a [routerLink]="['/dashboard']"  class="navbar-brand" style="color: white;border-radius: 20px">HEALTHCARE</a>
         </div>
         <!--        <div class="container">
                   <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
@@ -14,7 +14,7 @@
                   <span class="badge badge-notify">5</span>
                 </div>-->
         <ul class="nav navbar-nav">
-          <li class="active"><a (click)="setDashboardClick()"> Dashboard</a></li>
+          <li class="active"><a [routerLink]="['/dashboard']"  (click)="setDashboardClick()"> Dashboard</a></li>
 
           <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:5px;"><a class="dropdown-toggle"
                                                                                        style="color: #0f0f0f;border-radius: 20px;"
@@ -120,9 +120,9 @@
               <div class="well well-small clearfix">
                 <div class="row-fluid">
 
-                  <div class="span4 btn-default" [class.openBackground]="patient['status']==0" [attr.id]="'details'+i" *ngFor="let patient of patientDetails;let i=index">
+                  <div class="span4 btn-default"  [attr.id]="'details'+i" *ngFor="let patient of patientDetails;let i=index">
                     <h2>{{patient['name']}} </h2>
-                    <ul class="unstyled" style="list-style-type: none;" (click)="showButtons(i)">
+                    <ul [class.openAccept]="patient['status']==0" [class.openReject]="patient['status']==-1" class="unstyled" style="list-style-type: none;" (click)="showButtons(i)">
                       <li>
                         <span class="glyphicon glyphicon-earphone"></span>
                         {{patient['phone_number']}}

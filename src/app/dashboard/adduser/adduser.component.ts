@@ -70,7 +70,6 @@ export class AddUserComponent implements OnInit, OnChanges {
         } else {
           if (response.status === '3500') {
             this.errMessage = 'User alreadey Exist';
-            console.log('EEEEEEEEEEEE' + this.errMessage);
             this.modalButton1.nativeElement.click();
           } else {
             this.modalButton1.nativeElement.click();
@@ -81,7 +80,6 @@ export class AddUserComponent implements OnInit, OnChanges {
       .catch((err) => {
         // if(err.code==='ER_DUP_ENTRY')
         this.reset();
-        console.log('INSIDE CATCHS');
         console.log(err);
       });
 
@@ -104,7 +102,6 @@ export class AddUserComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('changes : ' + JSON.stringify(changes));
     if (this.appComponent.addUser) {
       this.modalButton.nativeElement.click();
     }
