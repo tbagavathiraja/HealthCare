@@ -26,10 +26,15 @@ export class GetusersService {
       .then(this.extractData)
       .catch(this.handleError);
   }
-
+  deleteUser(mailId): Promise<any> {
+    const headers = new Headers();
+    this.createHeaders(headers);
+    return this.http.delete(AppConstants.serverUrl + '/deleteuser/' + mailId , {headers: headers})
+      .toPromise()
+      .then(this.extractData)
+      .catch(this.handleError);
+  }
   private extractData(res: Response) {
-    console.log('in service')
-    console.log('GETTING USER : ' + res);
     return res.json();
   }
 

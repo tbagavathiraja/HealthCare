@@ -58,10 +58,10 @@
           <div class="modal-body">
 
             <div>
-              <p>User {{current_user.name}} details </p>
-              <p>{{current_user.mail_id}}</p>
-              <p> {{current_user.location}}</p>
-              <p>{{current_user.phone_number}}</p>
+              <p class="btn-success">{{current_user.name}}</p>
+              <p> <span class="glyphicon glyphicon-envelope"></span>{{current_user.mail_id}}</p>
+              <p> <i class="fa fa-map-marker" aria-hidden="true"></i> {{current_user.location}}</p>
+              <p><span class="glyphicon glyphicon-earphone"></span> {{current_user.phone_number}}</p>
 
             </div>
 
@@ -69,6 +69,13 @@
 
 
               <!-- input box styling is bootstrap 3.3.7 -->
+              <div class="container" style="float: left;width:210px">
+
+                <button *ngIf="removeUser" type="button" class="btn btn-danger"
+                        style="border-radius: 15px;color:black;width: 100%;color: black;margin-left: 36px"
+                        data-dismiss="modal" onmouseleave="this.style.backgroundColor = 'red' "  onmouseover="this.style.backgroundColor = '#5bc0de' " (click)="deleteUser(current_user['mail_id'])"  >remove
+                </button>
+              </div>
               <div class="container" style="float: right;width:210px">
 
                     <button type="button" class="btn btn-default"
@@ -88,4 +95,38 @@
 
   </div>
 
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button  #modalButton14 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal14"></button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal14" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" (click)="removeUser=false">&times;</button>
+          <div *ngIf="errMessage===''; else displayError">
+            <h4  class="modal-title">success</h4>
+          </div>
+          <ng-template #displayError>
+            <h4>User successfully removed </h4>
+          </ng-template>
+        </div>
+        <div class="modal-body" style=" ">
+          <div *ngIf="errMessage === ''; else errorBlock">
+            <p >user {{current_user['name']}} was successfully removed</p>
+          </div>
+          <ng-template  #errorBlock><p>Server error occured </p></ng-template>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="errMessage='';removeUser = false;">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
 

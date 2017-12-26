@@ -1,8 +1,9 @@
-<div class="btn nohover btn-info btn-lg" style="width: 100%;cursor: default">
+<nav class="navbar " data-spy="affix"   data-offset-top="197">
+<div    data-offset-top="197" class="navbar btn nohover btn-info btn-lg" onmouseleave="this.style.backgroundColor = '#5bc0de' "  onmouseover="this.style.backgroundColor = '#5bc0de' " style="width: 100%;cursor: default">
 
-  <div class="container-fluid">
+  <div class="container-fluid" >
 
-    <nav class="navbar " data-spy="affix" data-offset-top="197">
+
       <div class="container-fluid">
         <div class="navbar-header">
           <a [routerLink]="['/dashboard']"  class="navbar-brand" style="color: white;border-radius: 20px">HEALTHCARE</a>
@@ -16,24 +17,13 @@
         <ul class="nav navbar-nav">
           <li class="active"><a [routerLink]="['/dashboard']"  (click)="setDashboardClick()"> Dashboard</a></li>
 
-          <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:5px;"><a class="dropdown-toggle"
-                                                                                       style="color: #0f0f0f;border-radius: 20px;"
-                                                                                       data-toggle="dropdown" href="#"
-                                                                                       (click)="manageClick=!manageClick">Manage
-            users<span class="caret"></span></a>
-
-            <div class="btn-group-vertical" *ngIf="manageClick" style="border-radius: 15px;z-index: 999;">
-
-              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="add"
-                      (click)="manageUsers($event)">Add User
-              </button>
-              <button type="button" class="btn btn-info btn-lg" style="background-color: #5bc0de;" value="view"
-                      (click)="manageUsers($event)">view All users
-              </button>
-            </div>
+          <li *ngIf="getRole()==='admin'" data-toggle="modal" data-target="#manageUsers"   style="padding-left:5px;">
+            <a style="color: #0f0f0f;border-radius: 20px;" >
+              Manage users</a>
 
 
-            <ul class="dropdown-menu" id="add-dropdown" style="border-radius: 15px;">
+
+         <!--   <ul class="dropdown-menu" id="add-dropdown" style="border-radius: 15px;">
 
               <div class="btn-group-vertical" style="border-radius: 15px">
 
@@ -48,13 +38,14 @@
                         (click)="manageUsers($event)">remove user
                 </button>
               </div>
-            </ul>
+            </ul>-->
           </li>
           <li *ngIf="getRole()==='doctor'"><a style="color: #0f0f0f;border-radius:20px" data-toggle="modal"
                                               data-target="#myModal9" (click)="setshowDetails()">New Appoinements <span
             class="badge">{{statusCount  }}</span></a></li>
           <li><a style="color: #0f0f0f;border-radius:20px" (click)="myProfile()">Welcome {{userName}}</a>
-            <!--       <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:29px"><a class="dropdown-toggle"  data-toggle="dropdown" href="#" style="color: #0f0f0f;border-radius:20px" (click)="adminClick=!adminClick">Admin<span class="caret"></span></a>
+            <!--       <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:29px">
+            <a class="dropdown-toggle"  data-toggle="dropdown" href="#" style="color: #0f0f0f;border-radius:20px" (click)="adminClick=!adminClick">Admin<span class="caret"></span></a>
 
                  <div *ngIf="adminClick" class="btn-group-vertical" style="border-radius: 15px">
                      <button type="button" class="btn btn-info btn-lg" style="background-color:#5bc0de;" value="view" (click)="manageUsers($event)">view history</button>
@@ -81,12 +72,12 @@
                  (click)="logoutService.logoutUser()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>
-    </nav>
+
 
   </div>
 </div>
 
-
+</nav>
 
 
 <div class="container " *ngIf="showDetails">
@@ -186,3 +177,38 @@
 
 
 
+<div class="container">
+
+  <!-- Modal -->
+  <div class="modal fade" id="manageUsers" role="dialog">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Manage Users</h4>
+        </div>
+        <div class="modal-body">
+
+          <div  style=";border-radius: 25px;width: 100%">
+
+            <button data-dismiss="modal" onmouseleave="this.style.backgroundColor = '#5bc0de' " onmouseover="this.style.backgroundColor = '#d9534f' " type="button" class="btn btn-info btn-lg" style="margin-right:15px;background-color: #5bc0de;" value="add"
+                    (click)="manageUsers($event)"> Add User
+            </button>
+            <button  data-dismiss="modal" onmouseleave="this.style.backgroundColor = '#5bc0de' " onmouseover="this.style.backgroundColor = '#d9534f' "  type="button" class="btn btn-info btn-lg" style="margin-right:15px;background-color: #5bc0de;" value="view"
+                    (click)="manageUsers($event)">view All users
+            </button>
+            <button  data-dismiss="modal" onmouseleave="this.style.backgroundColor = '#5bc0de' " onmouseover="this.style.backgroundColor = '#d9534f' "  type="button" class="btn btn-info btn-lg" style="margin-right:15px;background-color: #5bc0de;" value="remove"
+                     (click)="manageUsers($event)">remove user
+            </button>
+          </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

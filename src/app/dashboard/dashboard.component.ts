@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   userRole = '';
   checkboxValue: boolean;
   searchKey = '';
+  removeUser = false;
 
   constructor(private dashboardService: DashboardService, private appcomponent: AppComponent, private router: Router) {
 
@@ -62,9 +63,15 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
 
   ngOnInit() {
     this.showIncludes = true;
+    this.userRole = this.appcomponent.userRole;
+    console.log('role : ', this.userRole)
     console.log(this.userRole);
   }
-
+getRole(){
+  if (this.isLogged) {
+    return this.appcomponent.userRole;
+  }
+}
   getLocation(event) {
     this.selectedLocation = this.locations[event.target.value];
     this.showLocation = true;
@@ -81,7 +88,7 @@ export class DashboardComponent implements OnInit, DoCheck, OnDestroy {
   }
 
   search(event) {
-   // this.dashboardService.setSearchKey(event.target.value);
+    this.dashboardService.setSearchKey(event.target.value);
 
   }
 

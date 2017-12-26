@@ -56,27 +56,27 @@
         <ul class="nav navbar-nav">
 
           <li><a href="#" routerLink="./myprofile" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>My profile</a></li>
-          <li><a [routerLink]="['history']" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
+          <li *ngIf="getRole() === 'doctor' "><a [routerLink]="['history']" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
           <li><a href="#" routerLink="./editprofile" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
           <li><a [routerLink]="['/dashboard','bookappointment']" class="btn btn-info btn-lg"><span
             class="glyphicon glyphicon-edit"></span>Book appointment</a></li>
-          <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-trophy"></span>Achievments</a></li>
-
+        <!--  <li><a href="#" class="btn btn-info btn-lg"><span class="fa fa-trophy"></span>Achievments</a></li>
+-->
           <!-- Dropdown-->
           <li class="panel panel-default" id="dropdown">
-            <a class="btn btn-info btn-lg" (click)="toggle=!toggle" data-toggle="collapse" href="#dropdown-lvl1">
+            <a class="btn btn-info btn-lg" (click)="toggle=!toggle" data-toggle="collapse" href="#filter">
               <span class="glyphicon glyphicon-filter"></span> Filter <span class="caret"></span>
             </a>
 
             <!-- Dropdown ladduserevel 1 -->
-            <div id="dropdown-lvl1" class="panel-collapse collapse">
+            <div id="filter" class="collapse">
               <div class="panel-body">
                 <ul class="nav navbar-nav">
 
 
                   <!-- List group -->
                   <ul class="list-group">
-                    <li class="list-group-item" style="background-color:#f2f4f7">
+                    <li *ngIf="router.url === '/dashboard/bookappointment' " class="list-group-item" style="background-color:#f2f4f7">
                       Speciality
                       <div class="material-switch pull-right" >
                         <input id="someSwitchOptionDefault" (change)="showSpecialist=!showSpecialist" name="someSwitchOption001" type="checkbox"/>
@@ -111,12 +111,7 @@
                       </select>
 
                     </div>
-                      <li class="list-group-item" style="background-color:#f2f4f7">
-                      <br>
-                      <input class="btn btn-info" id="someSwitchOptionInfo" style="margin-bottom: 10px;width: 170px" value="sumbit"
-                             name="someSwitchOption001" (click)="getInfo()" type="submit"/>
-                      <label for="someSwitchOptionInfo" class="label-info"></label>
-                    </li>
+
 
                   </ul>
 
@@ -127,10 +122,7 @@
           </li>
 
         </ul>
-<div *ngIf="toggle">
-  <input  class="btn btn-info" style="padding-bottom: 16px;width: 180px" value="sumbit"
-               name="someSwitchOption001" type="submittt"/>
-</div>
+
       </div><!-- /.navbar-collapse -->
     </nav>
 

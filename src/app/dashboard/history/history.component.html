@@ -18,13 +18,13 @@
         <td *ngIf="user.status==='accepted';else rejected " class="text-center">
           <div id="info" style="text-align:center;border-radius:8px;width: 100%;height:40px;background-color: #5bc0de"
                data-toggle="modal" data-target="#myModal11" (click)="getDetails(i);"><h3
-            style="color: black;padding-bottom: 40px;padding-top: 6px">{{user.patient_name}}</h3>
+            style="color: black;padding-bottom: 40px;padding-top: 6px">{{user?.patient_name}}</h3>
           </div>
         </td>
         <ng-template #rejected>
           <div class="btn-danger" id="info" style="text-align:center;border-radius:8px;width: 100%;height:40px"
                data-toggle="modal" data-target="#myModal11" (click)="getDetails(i);"><h3
-            style="color: black;padding-bottom: 40px;padding-top: 6px">{{user.patient_name}}</h3>
+            style="color: black;padding-bottom: 40px;padding-top: 6px">{{user?.patient_name}}</h3>
           </div>
 
         </ng-template>
@@ -34,7 +34,11 @@
   </div>
 </div>
 
-
+<ng-template #errTemplate>
+  <div class="container">
+    <p class="btn-danger"> History is available only for doctors</p>
+  </div>
+</ng-template>
 
 <!--
 details modal
@@ -54,17 +58,17 @@ details modal
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-          <h4  class="modal-title">{{users.patient_name}} details</h4>
+          <h4  class="modal-title" >{{users?.patient_name}} details</h4>
 
         </div>
         <div class="modal-body">
 
           <div>
-            <p>{{users.mail_id}}</p>
-            <p> {{users.location}}</p>
-            <p>{{users.phone_number}}</p>
-            <p>{{users.checked_date_time}}</p>
-            <p>{{users.status}}</p>
+            <p>{{users?.mail_id}}</p>
+            <p> {{users?.location}}</p>
+            <p>{{users?.phone_number}}</p>
+            <p>{{users?.checked_date_time}}</p>
+            <p>{{users?.status}}</p>
 
           </div>
 
@@ -113,7 +117,7 @@ details modal
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4  style="border-radius: 20px" class="modal-title btn-success">Booking confirmed on {{users.date}} at {{users.time}}</h4>
+          <h4  style="border-radius: 20px" class="modal-title btn-success">Booking confirmed on {{users?.date}} at {{users?.time}}</h4>
 
           <div class="modal-footer">
             <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-right: 210px" class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close</button>

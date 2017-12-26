@@ -11,7 +11,6 @@ export class DashboardService {
   }
 
   setSearchKey(key) {
-    console.log('service key : ', key);
     this.searchKey.next(key);
   }
 

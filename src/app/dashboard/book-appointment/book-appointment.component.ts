@@ -18,6 +18,7 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
   @ViewChild('modalButton2') modalButton2: ElementRef;
   @ViewChild('modalButton7') modalButton7: ElementRef;
   userDetails = [];
+  userDetailsTemp = [];
   showDetails = false;
   users;
   currentDate = new Date();
@@ -54,14 +55,61 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
   ngDoCheck() {
 
     this.dashboardService.getSearchKey().subscribe((key) => {
-      console.log(key);
-      console.log(key.length);
+      this.userDetails = this.userDetailsTemp;
       if (typeof key !== 'undefined' && key !== null) {
+        this.searchKey = key;
         if (key.length > 0) {
-          this.userDetails = this.userDetails.filter(this.checkKey);
+          console.log(key + '  ' + this.userDetails);
+          this.userDetails = this.userDetails.filter((value) => {
+            if (key !== undefined && key !== null) {
+              return value['name'].indexOf(key) !== -1;
+            }
+          });
+          // console.log('result is : ', result);
         }
       }
     });
+
+
+    const temp = [];
+    if (this.dashBoardComponent.showSpecialist && this.dashBoardComponent.showLocation) {
+
+      for (let iloop = 0; iloop < this.userDetails.length; iloop++) {
+        const userObj = this.userDetails[iloop];
+        if (userObj['location'] === this.dashBoardComponent.selectedLocation &&
+          userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
+          temp.push(this.userDetails[iloop]);
+        }
+      }
+      this.userDetails = temp;
+    } else if (this.dashBoardComponent.showLocation) {
+      for (let iloop = 0; iloop < this.userDetails.length; iloop++) {
+        const userObj = this.userDetails[iloop];
+        if (userObj['location'] === this.dashBoardComponent.selectedLocation) {
+          //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
+          temp.push(this.userDetails[iloop]);
+        }
+      }
+      this.userDetails = temp;
+    } else if (this.dashBoardComponent.showSpecialist) {
+
+
+      for (let iloop = 0; iloop < this.userDetails.length; iloop++) {
+        const userObj = this.userDetails[iloop];
+        if (userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
+          //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
+          temp.push(this.userDetails[iloop]);
+        }
+      }
+      this.userDetails = temp;
+
+    } else {
+      if (this.searchKey.length <= 0) {
+        this.userDetails = this.userDetailsTemp;
+      }
+      console.log('showing all doctors');
+    }
+
   }
 
   ngOnInit() {
@@ -69,7 +117,8 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
       .then((roleUserDetails) => {
         console.log('no err');
         this.userDetails = roleUserDetails;
-        console.log(roleUserDetails);
+        this.userDetailsTemp = this.userDetails;
+        console.log(this.userDetails);
       })
       .catch((error) => {
         console.log('error');
@@ -80,55 +129,7 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
     this.dashboardService.getSearchKey().subscribe((key) =>
       this.searchKey = key
     );
-    const temp = [];
-    console.log('in bookig appointment');
-    if (this.dashBoardComponent.showSpecialist && this.dashBoardComponent.showLocation) {
 
-
-      for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
-        console.log(this.dashBoardComponent.usersByRole[iloop]);
-        const userObj = this.dashBoardComponent.usersByRole[iloop];
-        if (userObj['location'] === this.dashBoardComponent.selectedLocation &&
-          userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
-          console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
-          temp.push(this.dashBoardComponent.usersByRole[iloop]);
-        }
-      }
-      this.userDetails = temp;
-      console.log('Filtered : ', temp);
-      console.log('filter by location', this.dashBoardComponent.selectedLocation);
-
-
-      console.log('filtering by both');
-    } else if (this.dashBoardComponent.showLocation) {
-      for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
-        console.log(this.dashBoardComponent.usersByRole[iloop]);
-        const userObj = this.dashBoardComponent.usersByRole[iloop];
-        if (userObj['location'] === this.dashBoardComponent.selectedLocation) {
-          //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
-          temp.push(this.dashBoardComponent.usersByRole[iloop]);
-        }
-      }
-      this.userDetails = temp;
-      console.log('Filtered : ', temp);
-      console.log('filter by location', this.dashBoardComponent.selectedLocation);
-    } else if (this.dashBoardComponent.showSpecialist) {
-
-
-      for (let iloop = 0; iloop < this.dashBoardComponent.usersByRole.length; iloop++) {
-        console.log(this.dashBoardComponent.usersByRole[iloop]);
-        const userObj = this.dashBoardComponent.usersByRole[iloop];
-        if (userObj['speciality'] === this.dashBoardComponent.selectedSpecialist) {
-          //  console.log('matched', this.dashBoardComponent.usersByRole[iloop]);
-          temp.push(this.dashBoardComponent.usersByRole[iloop]);
-        }
-      }
-      this.userDetails = temp;
-      console.log('Filtered : ', temp);
-    } else {
-      console.log('showing all doctors');
-    }
-    console.log(JSON.stringify(this.userDetails));
     this.myForm = this.formBuilder.group({
       // Empty string or null means no initial value. Can be also specific date for
       // example: {date: {year: 2018, month: 10, day: 9}} which sets this date to initial
@@ -213,6 +214,7 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
   }
 
   private checkKey(value) {
+    console.log('Inside method : ', this.searchKey);
     if (this.searchKey !== undefined && this.searchKey !== null) {
       console.log('METHOD ', value['name']);
       console.log(this.searchKey);

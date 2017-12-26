@@ -40,6 +40,9 @@ export class NavbarComponent implements OnInit, DoCheck {
     } else if (event.target.value === 'view') {
       console.log('navvigatin to view');
       this.router.navigate(['dashboard/getusers', 'allusers']);
+    } else{
+      this.dashboardComponent.removeUser = true;
+      this.router.navigate(['dashboard/getusers', 'allusers']);
     }
     console.log('MANAGE USER : ' + event.target.value);
   }
