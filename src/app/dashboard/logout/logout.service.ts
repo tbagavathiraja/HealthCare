@@ -19,7 +19,7 @@ export class LogoutService {
   logoutUser(){
 
     console.log('Logging outtt...');
-    console.log(this.router.url)
+
     this.logout()
       .then((response) => {
 

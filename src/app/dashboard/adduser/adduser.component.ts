@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, DoCheck, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {AppComponent} from '../../app.component';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AddUserService} from './adduser.service';
@@ -10,12 +10,12 @@ import {Router} from '@angular/router';
   templateUrl: './adduser.component.html',
   styleUrls: ['./adduser.component.css']
 })
-export class AddUserComponent implements OnInit, OnChanges {
+export class AddUserComponent implements OnInit, OnChanges,DoCheck {
   @ViewChild('modalButton') modalButton: ElementRef;
   @ViewChild('modalButton1') modalButton1: ElementRef;
   @Input() show;
-  roles = ['Admin', 'Doctor', 'Patient'];
-  selectedRole = 'Admin';
+  roles = ['admin', 'doctor', 'patient'];
+  selectedRole = 'admin';
   newUser = {
     firstName: '',
     lastName: '',
@@ -25,10 +25,14 @@ export class AddUserComponent implements OnInit, OnChanges {
     role: '',
     emailId: '',
     password: '',
+    speciality: ''
 
   };
   complexForm: FormGroup;
   errMessage = '';
+  showSpeciality = false;
+  selectedSpeciality = 'ENT';
+  specialityList = ['ENT', 'Dermatologist', 'Neurologist', 'Podiatrist', 'Physical_therapist'];
 
   constructor(private localStorage: LocalStorage, private router: Router, private appComponent: AppComponent,
               private  fb: FormBuilder, private userService: AddUserService) {
@@ -52,12 +56,24 @@ export class AddUserComponent implements OnInit, OnChanges {
 
   getRole(event) {
     this.selectedRole = event.target.value;
+    if (this.selectedRole === 'doctor') {
+      this.showSpeciality = true;
+    } else {
+      this.showSpeciality = false;
+    }
+  }
+
+  setSpeciality(event) {
+    this.selectedSpeciality = event.target.value;
   }
 
   submitForm(value: any) {
     this.newUser = value;
     console.log('SUBMITTED');
     this.newUser.role = this.selectedRole;
+    if (this.selectedRole === 'doctor') {
+      this.newUser.speciality = this.selectedSpeciality;
+    }
     console.log(this.newUser);
     this.userService.addUser(this.newUser)
       .then((response) => {
@@ -74,6 +90,7 @@ export class AddUserComponent implements OnInit, OnChanges {
           } else {
             this.modalButton1.nativeElement.click();
           }
+          this.appComponent.addUser = false;
         }
         this.reset();
       })
@@ -97,10 +114,10 @@ export class AddUserComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  showPopup() {
-    this.modalButton.nativeElement.click();
-  }
 
+ngDoCheck(){
+
+}
   ngOnChanges(changes: SimpleChanges) {
     if (this.appComponent.addUser) {
       this.modalButton.nativeElement.click();

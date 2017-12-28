@@ -1,28 +1,39 @@
-<div class="container">
-  <button #modalButton type="button" style="display: none" class="btn btn-info btn-lg" data-toggle="modal"
+<div class="container" >
+  <button #modalButton type="button" class="btn btn-info btn-lg triggerModalBtn" data-toggle="modal"
           data-target="#myModal">
   </button>
 
   <!-- Modal -->
 
 
-  <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" style="width:100%;height: 100%">
+  <div class="modal fade modalContainer" id="myModal" role="dialog" >
     <div class="modal-dialog" >
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" style="color: red;" data-dismiss="modal">&times;</button>
+          <button type="button" class="close"  data-dismiss="modal">&times;</button>
         </div>
         <br>
-        <div class="container" style="width:100%;height:50%;background:#5bc0de">
+        <div class="container userForm">
           <h3>Add User Detils</h3>
           <form data-toggle="validator" role="form" [formGroup]="complexForm" (ngSubmit)="submitForm(complexForm.value)">
-            <div class="form-group" style="width: 100%">
+            <div class="form-group fmgp" >
               <label for="sel1">Select User Role</label>
               <select class="form-control" id="sel1" name="role_id" (change)="getRole($event)">
                 <option *ngFor="let role of roles" [value]="role">{{role}}</option>
               </select>
             </div>
+
+            <div *ngIf="showSpeciality" class="form-group fmgp">
+              <label for="sel1">Select Doctor Speciality</label>
+              <select class="form-control" name="role_id" (change)="setSpeciality($event)">
+                <option *ngFor="let speciality of specialityList" [value]="speciality">{{speciality}}</option>
+              </select>
+            </div>
             <br>
+
+
+
+
 
             <div class="form-group" [ngClass]="{'has-error':!complexForm.controls['email'].valid && complexForm.controls['email'].touched}">
               <div class="input-group">
@@ -128,17 +139,17 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <div *ngIf="errMessage===''; else displayError">
-          <h4  class="modal-title">success</h4>
+          <h4  class="modal-title btn-success">success</h4>
           </div>
           <ng-template #displayError>
-            <h4>New user creation Failed</h4>
+            <h4 class="btn-danger">New user creation Failed</h4>
           </ng-template>
         </div>
         <div class="modal-body" style=" ">
           <div *ngIf="errMessage == ''; else errorBlock">
-          <p >New {{selectedRole}} was successfully created{{errMessage}}</p>
+          <p class="btn-success">New {{selectedRole}} was successfully created{{errMessage}}</p>
           </div>
-          <ng-template  #errorBlock><p>User already exist </p></ng-template>
+          <ng-template  #errorBlock><p class="btn-danger">User already exist </p></ng-template>
         </div>
         <div class="modal-footer">
           <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-left: 50px" class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close</button>

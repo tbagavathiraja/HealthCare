@@ -56,7 +56,7 @@
         <ul class="nav navbar-nav">
 
           <li><a href="#" routerLink="./myprofile" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-user"></span>My profile</a></li>
-          <li *ngIf="getRole() === 'doctor' "><a [routerLink]="['history']" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
+          <li><a [routerLink]="['history']" class="btn btn-info btn-lg"><span class="fa fa-history"></span> History</a></li>
           <li><a href="#" routerLink="./editprofile" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-edit"></span>Edit</a></li>
           <li><a [routerLink]="['/dashboard','bookappointment']" class="btn btn-info btn-lg"><span
             class="glyphicon glyphicon-edit"></span>Book appointment</a></li>

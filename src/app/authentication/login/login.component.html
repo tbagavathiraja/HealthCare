@@ -1,99 +1,101 @@
+<div class="container space">
+</div>
+<div class="container login">
 
-    <div class="container" style="background-color: #403833;width: 100%;">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text">
+      <h1><strong class="logo">HEALTHCARE </strong><span>Login</span></h1>
+    </div>
+  </div>
 
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 text">
-          <h1><strong
-            style="color:#FF7790;background-color: rgba(66,66,66,0.6);padding-left: 125px;">HEALTHCARE </strong><span
-            style="color:#FF7780; padding-right: 125px;">Login</span></h1>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3 form-box loginDeatils">
+      <div class="form-top">
+        <div class="form-top-left">
+          <h3>Login to our site</h3>
+          <p>Enter your username and password to log on:</p>
+        </div>
+        <div class="form-top-right">
+          <i class="fa fa-lock"></i>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3 form-box" style="width: 50%">
-          <div class="form-top">
-            <div class="form-top-left">
-              <h3>Login to our site</h3>
-              <p>Enter your username and password to log on:</p>
-            </div>
-            <div class="form-top-right">
-              <i class="fa fa-lock"></i>
-            </div>
+      <div class="form-bottom">
+        <form class="login-form" (submit)="login()">
+
+          <div class="form-group">
+            <label class="sr-only" for="form-username">Username</label>
+            <input type="text" name="username" [(ngModel)]="credentials.username"
+                   [ngModelOptions]="{standalone: true}" placeholder="Enter emailId"
+                   class="form-username form-control"
+                   id="form-username">
           </div>
 
-          <div class="form-bottom">
-            <form class="login-form" (submit)="login()">
-
-              <div class="form-group">
-                <label class="sr-only" for="form-username">Username</label>
-                <input type="text" name="username" [(ngModel)]="credentials.username"
-                       [ngModelOptions]="{standalone: true}" placeholder="Enter emailId"
-                       class="form-username form-control"
-                       id="form-username">
-              </div>
-
-              <div class="form-group">
-                <label class="sr-only" for="form-password">Password</label>
-                <input type="password" name="password" [(ngModel)]="credentials.password"
-                       [ngModelOptions]="{standalone: true}" placeholder="Enter password"
-                       class="form-password form-control"
-                       id="form-password">
-              </div>
-
-              <button type="submit" class="btn">Sign in!</button>
-              <div class="alert alert-danger" *ngIf="errMessage != ''">{{errMessage}}.
-              </div><br>
-              <div><a [routerLink]="['../resetpassword']"  style="color: white;top: 330px;cursor:pointer;position: absolute" >forgot password</a></div>
-            <br>
-            </form>
+          <div class="form-group">
+            <label class="sr-only" for="form-password">Password</label>
+            <input type="password" name="password" [(ngModel)]="credentials.password"
+                   [ngModelOptions]="{standalone: true}" placeholder="Enter password"
+                   class="form-password form-control"
+                   id="form-password">
           </div>
 
-        </div>
+          <button type="submit" class="btn">Sign in!</button>
+          <div class="alert alert-danger" *ngIf="errMessage != ''">{{errMessage}}.
+          </div>
+          <br>
+          <div><a [routerLink]="['../resetpassword']" class="forgotPassword">forgot
+            password</a></div>
+          <br>
+        </form>
       </div>
 
-      <div class="row" style="background-color:#403833;">
-        <div class="col-sm-6 col-sm-offset-3 social-login">
-          <h3>...or login with:</h3>
-          <div class="social-login-buttons">
-            <a class="btn btn-link-2" >
-              <i class="fa fa-facebook"></i> Facebook
-            </a>
-            <a class="btn btn-link-2" >
-              <i class="fa fa-twitter"></i> Twitter
-            </a>
-            <a class="btn btn-link-2" >
-              <i class="fa fa-google-plus"></i> Google Plus
-            </a>
+    </div>
+  </div>
+
+  <div class="row" class="fill">
+    <!-- <div class="col-sm-6 col-sm-offset-3 social-login">
+       <h3>...or login with:</h3>
+       <div class="social-login-buttons">
+         <a class="btn btn-link-2" >
+           <i class="fa fa-facebook"></i> Facebook
+         </a>
+         <a class="btn btn-link-2" >
+           <i class="fa fa-twitter"></i> Twitter
+         </a>
+         <a class="btn btn-link-2" >
+           <i class="fa fa-google-plus"></i> Google Plus
+         </a>
+       </div>
+     </div>-->
+  </div>
+  <div class="fill1">
+    <p></p>
+  </div>
+</div>
+
+
+<div class="container">
+  <!-- Trigger the modal with a button -->
+  <button #modalButton6 type="button" class="btn btn-info btn-lg triggerModalBtn" data-toggle="modal"
+          data-target="#myModal6"></button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal6" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Session expired</h4>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default closeBtn" data-dismiss="modal" (click)="errMessage=''">Close
+            </button>
           </div>
         </div>
-      </div>
-      <div style="width: 100%;background-color: #403833;height: 100%">
-        <p></p>
       </div>
     </div>
 
-
-
-    <div class="container">
-      <!-- Trigger the modal with a button -->
-      <button  #modalButton6 style="display: none" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal6"></button>
-
-      <!-- Modal -->
-      <div class="modal fade" id="myModal6" role="dialog">
-        <div class="modal-dialog">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4  class="modal-title">Session expired</h4>
-
-            <div class="modal-footer">
-              <button type="button"  style="border-radius: 10px;width: 30%;color: black;margin-right: 210px" class="btn btn-default" data-dismiss="modal" (click)="errMessage=''">Close</button>
-            </div>
-          </div>
-          </div>
-        </div>
-
-        </div>
-      </div>
+  </div>
+</div>

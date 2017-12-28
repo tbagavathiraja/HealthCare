@@ -3,6 +3,7 @@ import {HistoryService} from './history.service';
 import {LocalStorage} from '../../app.localStorage';
 import {DashboardComponent} from '../dashboard.component';
 import {DashboardService} from '../dashboard.service';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-history',
@@ -18,8 +19,9 @@ export class HistoryComponent implements OnInit, DoCheck {
   showDetails = false;
   users;
   searchKey = '';
+  temp= false;
 
-  constructor(private dashBoardService: DashboardService, private dashboardComponent: DashboardComponent, private historyService: HistoryService) {
+  constructor(private appComponent: AppComponent, private dashBoardService: DashboardService, private dashboardComponent: DashboardComponent, private historyService: HistoryService) {
   }
 
   ngDoCheck() {
@@ -29,9 +31,9 @@ export class HistoryComponent implements OnInit, DoCheck {
       if (typeof key !== 'undefined' && key !== null) {
         this.searchKey = key;
         if (key.length > 0) {
-          console.log('filter : ', this.userDetails)
+          console.log('filter : ', this.userDetails);
           this.userDetails = this.userDetails.filter((value) => {
-            if (key !== undefined && key !== null) {
+            if (key !== undefined && key !== null && value['patient_name'] !== null && value['patient_name']) {
               return value['patient_name'].indexOf(key) !== -1;
             }
           });
@@ -69,13 +71,18 @@ export class HistoryComponent implements OnInit, DoCheck {
       .then((response) => {
         this.userDetails = response;
         this.userDetailsTemp = this.userDetails;
-        console.log(response);
+        this.temp = true;
       }).catch((err) => {
       console.log(err);
     });
     this.dashBoardService.getSearchKey().subscribe((key) =>
       this.searchKey = key
     );
+  }
+  getRole() {
+    if (this.dashboardComponent.isLoggedIn()) {
+      return this.appComponent.userRole;
+    }
   }
 
   getDetails(index) {

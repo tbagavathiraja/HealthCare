@@ -1,0 +1,105 @@
+.login {
+  background-color: #403833;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.space {
+  background-color: #403833;
+  width: 100%;
+  height: 13vh;
+  overflow-y: hidden;
+}
+
+.loginDeatils {
+  width: 50%
+}
+
+.logo {
+  color: #FF7790;
+  background-color: rgba(66, 66, 66, 0.6);
+  padding-left: 125px;
+}
+
+.logo1 {
+  color: #FF7780;
+  padding-right: 125px;
+}
+
+.fill {
+  background-color: #403833;
+  width: 100%;
+  height: 15vh;
+  overflow-y: hidden;
+}
+
+.fill1 {
+  width: 100%;
+  background-color: #403833
+}
+
+.triggerModalBtn {
+  display: none
+}
+
+
+
+.closeBtn {
+  border-radius: 10px;
+  width: 30%;
+  color: black;
+  margin-right: 210px
+}
+
+.forgotPassword {
+  color: white;
+  top: 330px;
+  cursor: pointer;
+  position: absolute
+}
+
+.forgotPassword:hover {
+  color: cornflowerblue;
+
+  background-color: white;
+  color: red;
+  font-size: 20px;
+
+  animation: shake 0.8s;
+  animation-iteration-count: infinite;
+}
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}

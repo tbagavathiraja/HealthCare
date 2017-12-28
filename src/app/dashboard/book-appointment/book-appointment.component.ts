@@ -56,12 +56,12 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
 
     this.dashboardService.getSearchKey().subscribe((key) => {
       this.userDetails = this.userDetailsTemp;
-      if (typeof key !== 'undefined' && key !== null) {
+      if (typeof key !== 'undefined' && key !== null && this.userDetails.length>0) {
         this.searchKey = key;
         if (key.length > 0) {
           console.log(key + '  ' + this.userDetails);
           this.userDetails = this.userDetails.filter((value) => {
-            if (key !== undefined && key !== null) {
+            if (key !== undefined && key !== null && value['name'] !== null && value['name']) {
               return value['name'].indexOf(key) !== -1;
             }
           });
@@ -73,7 +73,9 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
 
     const temp = [];
     if (this.dashBoardComponent.showSpecialist && this.dashBoardComponent.showLocation) {
-
+      if (this.searchKey.length <= 0) {
+        this.userDetails = this.userDetailsTemp;
+      }
       for (let iloop = 0; iloop < this.userDetails.length; iloop++) {
         const userObj = this.userDetails[iloop];
         if (userObj['location'] === this.dashBoardComponent.selectedLocation &&
@@ -83,6 +85,9 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
       }
       this.userDetails = temp;
     } else if (this.dashBoardComponent.showLocation) {
+      if (this.searchKey.length <= 0) {
+        this.userDetails = this.userDetailsTemp;
+      }
       for (let iloop = 0; iloop < this.userDetails.length; iloop++) {
         const userObj = this.userDetails[iloop];
         if (userObj['location'] === this.dashBoardComponent.selectedLocation) {
@@ -92,7 +97,9 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
       }
       this.userDetails = temp;
     } else if (this.dashBoardComponent.showSpecialist) {
-
+      if (this.searchKey.length <= 0) {
+        this.userDetails = this.userDetailsTemp;
+      }
 
       for (let iloop = 0; iloop < this.userDetails.length; iloop++) {
         const userObj = this.userDetails[iloop];
@@ -128,8 +135,8 @@ export class BookAppointmentComponent implements OnInit, DoCheck {
     // this.userDetails = this.appComponent.usersByRole;
     this.dashboardService.getSearchKey().subscribe((key) =>
       this.searchKey = key
-    );
 
+    );
     this.myForm = this.formBuilder.group({
       // Empty string or null means no initial value. Can be also specific date for
       // example: {date: {year: 2018, month: 10, day: 9}} which sets this date to initial

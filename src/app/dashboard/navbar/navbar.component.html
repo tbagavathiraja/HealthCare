@@ -6,7 +6,7 @@
 
       <div class="container-fluid">
         <div class="navbar-header">
-          <a [routerLink]="['/dashboard']"  class="navbar-brand" style="color: white;border-radius: 20px">HEALTHCARE</a>
+          <a id="navbar-title-name" [routerLink]="['/dashboard']"  class="navbar-brand zoomEffect">HEALTHCARE</a>
         </div>
         <!--        <div class="container">
                   <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
@@ -15,10 +15,10 @@
                   <span class="badge badge-notify">5</span>
                 </div>-->
         <ul class="nav navbar-nav">
-          <li class="active"><a [routerLink]="['/dashboard']"  (click)="setDashboardClick()"> Dashboard</a></li>
+          <li class="active"><a  id="navbar-title" [routerLink]="['/dashboard']"  (click)="setDashboardClick()"> Dashboard</a></li>
 
           <li *ngIf="getRole()==='admin'" data-toggle="modal" data-target="#manageUsers"   style="padding-left:5px;">
-            <a style="color: #0f0f0f;border-radius: 20px;" >
+            <a class="changeColor">
               Manage users</a>
 
 
@@ -40,10 +40,10 @@
               </div>
             </ul>-->
           </li>
-          <li *ngIf="getRole()==='doctor'"><a style="color: #0f0f0f;border-radius:20px" data-toggle="modal"
+          <li *ngIf="getRole()==='doctor'"><a class="zoomEffect" style="color: #0f0f0f;border-radius:20px" data-toggle="modal"
                                               data-target="#myModal9" (click)="setshowDetails()">New Appoinements <span
             class="badge">{{statusCount  }}</span></a></li>
-          <li><a style="color: #0f0f0f;border-radius:20px" (click)="myProfile()">Welcome {{userName}}</a>
+          <li><a class="changeColor" (click)="myProfile()">Welcome {{userName}}</a>
             <!--       <li *ngIf="getRole()=='admin'" class="dropdown" style="padding-left:29px">
             <a class="dropdown-toggle"  data-toggle="dropdown" href="#" style="color: #0f0f0f;border-radius:20px" (click)="adminClick=!adminClick">Admin<span class="caret"></span></a>
 
@@ -68,7 +68,7 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a class="btn btn-info btn-lg" style="color: #0f0f0f;border-radius: 20px"
+          <li><a class="btn btn-info btn-lg zoomEffect zoomEffectFast" id="logout" id="logout"
                  (click)="logoutService.logoutUser()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
       </div>

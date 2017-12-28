@@ -1,19 +1,147 @@
 
+.changeColor {
+  color: #0f0f0f;
+  border-radius: 20px;
+}
 
+.changeColor:hover {
+  background-color: white;
+  color: red;
+  font-size: 20px;
+  animation: shake 0.8s;
+}
 
+#navbar-title {
+  border-radius: 20px;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+
+#navbar-title:hover {
+  background-color: white;
+  color: red;
+  font-size: 20px;
+
+  animation: shake 0.8s;
+
+}
+
+.zoomEffect {
+  color: white;
+  border-radius: 20px;
+  -webkit-transition: all 200ms ease-in;
+  -webkit-transform: scale(1);
+  -ms-transition: all 200ms ease-in;
+  -ms-transform: scale(1);
+  -moz-transition: all 200ms ease-in;
+  -moz-transform: scale(1);
+  transition: all 200ms ease-in;
+  transform: scale(1);
+}
+
+.zoomEffect:hover {
+  background-color: white;
+  color: red;
+  font-size: 20px;
+
+  animation: shake 0.8s;
+
+  /* box-shadow: 0px 0px 150px #000000;
+   z-index: 2;
+   -webkit-transition: all 200ms ease-in;
+   -webkit-transform: scale(1.5);
+   -ms-transition: all 200ms ease-in;
+   -ms-transform: scale(1.5);
+   -moz-transition: all 200ms ease-in;
+   -moz-transform: scale(1.5);
+   transition: all 200ms ease-in;
+   transform: scale(1.5);*/
+}
+
+#logout {
+  color: #0f0f0f;
+  border-radius: 20px
+}
+
+#logout:hover {
+  color: red;
+}
+
+.zoomEffectFast:hover {
+  background-color: white;
+  color: red;
+  font-size: 22px;
+
+  animation: shake 0.5s;
+  animation-iteration-count: infinite;
+
+  /* box-shadow: 0px 0px 150px #000000;
+   z-index: 2;
+   -webkit-transition: all 200ms ease-in;
+   -webkit-transform: scale(1.5);
+   -ms-transition: all 200ms ease-in;
+   -ms-transform: scale(1.5);
+   -moz-transition: all 200ms ease-in;
+   -moz-transform: scale(1.5);
+   transition: all 200ms ease-in;
+   transform: scale(1.5);*/
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
 
 /* CSS used here will be applied after bootstrap.css */
-.badge-notify{
-  background:red;
-  position:relative;
+.badge-notify {
+  background: red;
+  position: relative;
   top: -20px;
   left: -35px;
 }
 
-.openAccept{
+.openAccept {
   background-color: #449D44;
 }
-.openReject{
+
+.openReject {
   background-color: #DA5F5C;
 }
 
@@ -28,17 +156,18 @@
 }
 
 a {
-cursor:pointer;
+  cursor: pointer;
 }
 
-div.btn-group-vertical{
+div.btn-group-vertical {
   background-color: #2b669a;
   color: #2e6da4;
   width: 170px;
 }
+
 .btn.nohover:hover {
   /* here copy default .btn class styles */
-  cursor:default !important;
+  cursor: default !important;
   color: red;
   /* or something like that */
 }

@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
             }
 
             if (response.role_type_name === 'admin' || response.role_type_name === 'doctor' || response.role_type_name === 'patient') {
-              console.log('NAVIGATING', this.dasboardComponent.isLogged);
+
               this.router.navigate(['/dashboard']);
             }
           } else {
